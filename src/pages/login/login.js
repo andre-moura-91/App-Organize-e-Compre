@@ -44,6 +44,7 @@ function entrar(event) {
     window.location.href = '/src/pages/bem-vindo/saudacao.html';
 }
 
+
 esqueciSenha.addEventListener('click', function() {
     window.location.href = '/src/pages/password/redefinir-senha.html';
 });
