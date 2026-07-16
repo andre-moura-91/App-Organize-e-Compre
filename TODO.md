@@ -1,9 +1,13 @@
-# TODO - Correção do erro de MIME ao carregar CSS
+# TODO — Integrar onboarding-1 ao projeto
 
-- [ ] Levantar origem do request que está retornando `text/html` no lugar do CSS (via Network/console)
-- [x] Corrigir o `link` do `pre-lista.html` para apontar para o caminho correto do CSS servido pelo Vite
-- [x] Corrigir `@import` em `pre-lista.css` para caminhos resolvíveis (evitar retornos HTML por rota não encontrada)
-
-- [ ] Re-testar no navegador e confirmar que o console não mostra mais erro de MIME
-- [ ] (Opcional) ajustar também `index-lista.html` e outras páginas com o mesmo padrão
+- [x] Ajustar `src/pages/onboarding/onboarding-1.html` para conter os IDs esperados pelo JS (`watermark`, `stepLabel`, `illustration`).
+- [x] Atualizar `src/pages/onboarding/onboarding-1.js` para:
+  - [x] remover dependência de IDs inexistentes (evitar `null`)
+  - [x] trocar `onclick` inline por listeners no `DOMContentLoaded`
+  - [x] no `finish()`: salvar flag no `localStorage` e redirecionar para `src/pages/bem-vindo/saudacao.html`
+- [ ] (Se necessário) Verificar se existe ponto de entrada único do app que deve respeitar a flag `onboardingDone`.
+- [ ] Testar fluxo no browser:
+  - [ ] onboarding aparece quando `localStorage.onboardingDone` não está definido
+  - [ ] onboarding não aparece após concluir
+  - [ ] botão “Pular” também conclui e redireciona
 
