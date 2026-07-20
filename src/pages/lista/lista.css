@@ -362,12 +362,12 @@ span {
     display: none;
 }
 
-#carrinho_container {
+.carrinho_container {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 40%;
+    margin-top: 30%;
     padding: 20px;
 }
 

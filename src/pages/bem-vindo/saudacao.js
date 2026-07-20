@@ -15,7 +15,7 @@ bemVindo.appendChild(nomeUsuario);
 const btnComecar = document.getElementById('start-btn');
 
 function comecarLista() {
-    window.location.href = '/src/pages/lista/index-lista.html';
+    window.location.href = '/src/pages/lista/lista.html';
 }
 
 btnComecar.addEventListener('click', comecarLista);
