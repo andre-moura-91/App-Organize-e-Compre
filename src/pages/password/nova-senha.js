@@ -1,9 +1,9 @@
-const btnAcessar = document.getElementById('btn-acessar');
+const btnEntrar = document.getElementById('btn-entrar');
 
-function continuar(event) {
+function entrar(event) {
     event.preventDefault();
 
     window.location.href = 'https://mail.google.com';
 }
 
-btnAcessar.addEventListener('click', continuar);
+btnEntrar.addEventListener('click', entrar);

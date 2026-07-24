@@ -1,5 +1,4 @@
-let carrinhosItens = []
-let compras = JSON.parse(localStorage.getItem('minhaLista')) || [];
+let carrinhosItens = JSON.parse(localStorage.getItem('minhaLista')) || [];
 
 document.addEventListener('DOMContentLoaded', () => {
     const itemInput = document.getElementById('item_input');
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     excluirTudo.onclick = () => limparLista();
     }
 
-    let saveAll = document.getElementById('nav_save');
+    let saveAll = document.getElementById('save');
     if (saveAll) {
     saveAll.onclick = () => salvarTudo();
     }

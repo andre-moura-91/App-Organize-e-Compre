@@ -2,56 +2,52 @@
 @import url('/src/styles/components/bottomNavBar.css');
 
 body {
-    background-color: var(--cor-bg-clara);
+    background-color: var(--cor-principal-laranja);
     justify-content: center;
-    margin: 24px;
+    margin: 0 24px;
+}
+
+.bg-clean {
+    position: fixed;
+    top: 105px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 15px 0 0;
+    background-color: var(--cor-bg-clara);
+    z-index: -1;
 }
 
 .nav-bar {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    margin-top: 30px;
     justify-content: space-between;
 }
 
-.container-nav {
+.title-geral {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.cart-logo {
-    width: 26px;
-    height: 28px;
-    fill: var(--cor-principal-laranja);
-    margin-right: 10px;
-}
-
-.title-logo {
-    font-size: 18px;
-    color: var(--cor-principal-laranja);
-    font-weight: 700;
-}
-
-.calendario {
-    fill: var(--cor-icons-cinza-escuro);
+    flex-direction: column;
 }
 
 .visao {
     font-family: var(--font-texto);
     font-size: 12px;
     font-weight: 700;
-    color: var(--cor-subtitulo-cinza);
-    margin-top: 35px;
-    margin-bottom: 2px;
+    color: var(--cor-text1-branco);
     letter-spacing: 2.5px;
 }
 
 .title {
     font-family: var(--fonte-principal-titulo);
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 800;
     color: var(--cor-text2-preto);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.calendario {
+    fill: var(--cor-text1-branco);
 }
 
 .meses {

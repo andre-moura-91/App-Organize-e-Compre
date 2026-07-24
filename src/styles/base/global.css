@@ -21,6 +21,7 @@
   --cor-subtitulo-cinza: #5C5B5B;
   --cor-valor-carrinho: #43cfcf;
   --cor-bottombar-cinza: #b6b6b6;
+  --cor-delete: #FD7F7F;
 }
 
 /* 2. RESET CSS (Padroniza o comportamento dos elementos) */
@@ -34,9 +35,9 @@
 /* 3. FORMATAÇÃO BASE E HERANÇA */
 body {
   /* Ao aplicar aqui, todos os textos do site herdam essa fonte automaticamente */
-  font-family: var(--fonte-logo, --fonte-principal-titulo, --fonte-texto);
-  background-color: var(--cor-principal-laranja, --cor-bg-clara, --cor-input-cinza);
-  color: var(--cor-text2-preto, --cor-text1-branco, --cor-icons-cinza-escuro, --cor-principal-laranja, --cor-subtitulo-cinza, --cor-input-cinza, --cor-bottombar-cinza);
+  font-family: var(--fonte-logo, var(--fonte-principal-titulo, var(--fonte-texto)));
+  background-color: var(--cor-principal-laranja, var(--cor-bg-clara, var(--cor-input-cinza)));
+  color: var(--cor-text2-preto, var(--cor-text1-branco, var(--cor-icons-cinza-escuro, var(--cor-principal-laranja, var(--cor-subtitulo-cinza, var(--cor-input-cinza, var(--cor-bottombar-cinza, var(--cor-valor-carrinho, var(--cor-delete)))))))));
   line-height: 1.6;
 }
 

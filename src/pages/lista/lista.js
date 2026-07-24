@@ -73,12 +73,15 @@ function adicionarItem() {
 }
 
 
-function renderizarItensValor() {
+function renderizarItensValor(listaParaExibir = carrinhosItens) {
     const listaCarrinho = document.getElementById('carrinhoLista');
     if (!listaCarrinho) return;
     listaCarrinho.innerHTML = '';
 
-    carrinhosItens.forEach((item, i) => {
+    listaParaExibir.forEach((item, i) => {
+
+        const i = carrinhosItens.indexOf(item);
+
         let itemLista = document.createElement('li');
 
         let checkbox = document.createElement('input');

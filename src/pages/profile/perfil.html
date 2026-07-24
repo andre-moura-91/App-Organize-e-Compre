@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/pages/profile/perfil.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Organize&Compre</title>
+</head>
+<body>
+<header>
+    <!-- TELA: PERFIL -->
+    <div class="screen active" id="screen-perfil">
+        <section class="nav">
+            <span class="bg">ORG</span>
+            <div class="header-top">
+                <img class="seta" src="/src/assets/icons/icons perfil/seta.svg" alt="Seta">
+                <h1 class="header-title">Perfil</h1>
+            </div>
+        </section>
+        <section class="info-perfil">
+            <img class="avatar" src="/src/assets/imagens/avatar.png" alt="Avatar de André Moura">
+            <div class="user-info">
+                <h3 class="user-name">André Moura</h3>
+                <p class="user-email">coloque_seu@email.com</p>
+            </div>
+        </section>
+
+        <section class="main-content">
+            <h2 class="titulo">Conta</h2>
+            <div class="row-card" onclick="goTo('editar')">
+                <span class="icon-circle">
+                    <img src="/src/assets/icons/icons perfil/G perfil.svg" alt="Gerenciar perfil">
+                </span>
+                <span class="row-label">Gerenciar perfil</span>
+                <span class="chevron">›</span>
+            </div>
+            <div class="row-card" onclick="showToast('Abrindo senha e segurança...')">
+                <span class="icon-circle">
+                    <img src="/src/assets/icons/icons perfil/segurança.svg" alt="Segurança">
+                </span>
+                <span class="row-label">Senha e segurança</span>
+                <span class="chevron">›</span>
+            </div>
+            <div class="row-card" onclick="showToast('Abrindo configurações...')">
+                <span class="icon-circle">
+                    <img src="/src/assets/icons/icons perfil/configuraçoes.svg" alt="Configurações">
+                </span>
+                <span class="row-label">Configurações</span>
+                <span class="chevron">›</span>
+            </div>
+    
+            <h2 class="titulo">Preferências</h2>
+            <div class="row-card" onclick="showToast('Alterando tema...')">
+                <span class="icon-circle">
+                    <img src="/src/assets/icons/icons perfil/tema.svg" alt="Tema">
+                </span>
+                <span class="row-label">Tema</span>
+                <span class="chevron">›</span>
+            </div>
+            <div class="row-card" onclick="showToast('Abrindo notificações...')">
+                <span class="icon-circle">
+                    <img src="/src/assets/icons/icons perfil/notificações.svg" alt="Notificações">
+                </span>
+                <span class="row-label">Notificações</span>
+                <span class="chevron">›</span>
+            </div>
+            <div class="row-card" onclick="showToast('Saindo da conta...')">
+                <span class="icon-circle">
+                    <img src="/src/assets/icons/icons perfil/sair.svg" alt="Sair">
+                </span>
+                <span class="row-label">Sair</span>
+                <span class="chevron">›</span>
+            </div>
+            <div class="row-card danger" onclick="showToast('Ação irreversível — confirme para deletar')">
+                <span class="icon-circle">
+                    <img src="/src/assets/icons/icons perfil/deletar conta.svg" alt="Deletar conta">
+                </span>
+                <span class="row-delete">Deletar conta</span>
+                <span class="chevron">›</span>
+            </div>
+    
+            <div class="titulo">Suporte</div>
+            <div class="row-card" onclick="showToast('Abrindo feedback...')">
+                <span class="icon-circle">
+                    <img src="/src/assets/icons/icons perfil/feedback.svg" alt="Feedback">
+                </span>
+                <span class="row-label">Feedback</span>
+                <span class="chevron">›</span>
+            </div>
+            <div class="row-card" onclick="showToast('Abrindo ajuda...')">
+                <span class="icon-circle">
+                    <img src="/src/assets/icons/icons perfil/ajuda.svg" alt="Ajuda">
+                </span>
+                <span class="row-label">Preciso de ajuda</span>
+                <span class="chevron">›</span>
+            </div>
+        </section>
+        <div class="toast" id="toast-perfil"></div>
+    </div>
+
+    <!-- TELA: EDITAR PERFIL -->
+    <div class="screen" id="screen-editar">
+        <section class="nav">
+            <div class="header-top">
+                <button class="back-btn" onclick="goTo('perfil')">
+                    <img class="seta" src="/src/assets/icons/icons perfil/seta.svg" alt="Seta">
+                </button>
+                <h1 class="header-title">Editar Perfil</h1>
+            </div>
+        </section>
+        <section class="info-perfil">
+            <div class="avatar-edit-wrap">
+                <img class="avatar" src="/src/assets/imagens/avatar.png" alt="Avatar de André Moura">
+                <img class="camera-badge" src="/src/assets/icons/camera.svg" alt="Câmera" onclick="showToast('Selecionar nova foto')">
+            </div>
+        </section>
+
+        <section class="body">
+            <div class="field">
+                <label for="nome">Nome</label>
+                <div class="input-wrap">
+                    <input type="text" id="nome" placeholder="André Moura Lucena">
+                </div>
+            </div>
+            <div class="field">
+                <label for="email">E-mail</label>
+                <div class="input-wrap">
+                    <input type="email" id="email" placeholder="coloque_seu@email.com">
+                </div>
+            </div>
+            <div class="field">
+                <label for="usuario">Usuário</label>
+                <div class="input-wrap">
+                    <input type="text" id="usuario" placeholder="@andre_moura">
+                </div>
+            </div>
+            <div class="field">
+                <label for="genero">Gênero</label>
+                <div class="input-wrap">
+                    <img class="icon-setadown" src="/src/assets/icons/icons perfil/genero.svg" alt="Gênero">
+                    <select id="genero">
+                        <option>Masculino</option>
+                        <option>Feminino</option>
+                        <option>Prefiro não dizer</option>
+                        <option>Outro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label for="senha">Senha</label>
+                <div class="input-wrap">
+                    <input type="password" id="senha" placeholder="••••••••••••" value="senha1234">
+                    <button class="eye-toggle" type="button" onclick="togglePw()">
+                        <i id="password-line" class="ri-eye-line"></i>
+                        <i id="password-offline" class="ri-eye-off-line"></i>
+                    </button>
+                </div>
+            </div>
+            <button class="save-btn" id="save-btn" onclick="saveProfile()">Salvar</button>
+        </section>
+
+        <div class="toast" id="toast-editar"></div>
+    </div>
+</header>
+
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <script src="/src/pages/profile/perfil.js"></script>
+</body>
+</html>

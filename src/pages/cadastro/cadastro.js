@@ -37,14 +37,20 @@ function cadastro(event) {
             alert('Por favor, insira um email válido.');
             return;
     }
-    alert('Cadastro realizado com sucesso!');
-    window.location.href = '/src/pages/login/login.html';
+
+    if (senhaCadastroInput !== confirmeSenhaInput) {
+            alert('As senhas não são iguais. Por favor, tente novamente.');
+            return;
+    }
 
     localStorage.setItem('nome', nomeInput);
     localStorage.setItem('sobrenome', sobrenomeInput);
     localStorage.setItem('email', emailInput);
     localStorage.setItem('senhaCadastro', senhaCadastroInput);
     localStorage.setItem('confirmeSenha', confirmeSenhaInput);
+
+    alert('Cadastro realizado com sucesso!');
+    window.location.href = '/src/pages/login/login.html';
 }
 
 btnCadastro.addEventListener('click', cadastro);
