@@ -1,13 +1,16 @@
-# TODO — Integrar onboarding-1 ao projeto
+# TODO - Correção de Bugs em lista.js
 
-- [x] Ajustar `src/pages/onboarding/onboarding-1.html` para conter os IDs esperados pelo JS (`watermark`, `stepLabel`, `illustration`).
-- [x] Atualizar `src/pages/onboarding/onboarding-1.js` para:
-  - [x] remover dependência de IDs inexistentes (evitar `null`)
-  - [x] trocar `onclick` inline por listeners no `DOMContentLoaded`
-  - [x] no `finish()`: salvar flag no `localStorage` e redirecionar para `src/pages/bem-vindo/saudacao.html`
-- [ ] (Se necessário) Verificar se existe ponto de entrada único do app que deve respeitar a flag `onboardingDone`.
-- [ ] Testar fluxo no browser:
-  - [ ] onboarding aparece quando `localStorage.onboardingDone` não está definido
-  - [ ] onboarding não aparece após concluir
-  - [ ] botão “Pular” também conclui e redireciona
+## Bugs a Corrigir:
+
+- [x] **Bug #1** - Redeclaração da variável `i` dentro do `forEach`
+- [x] **Bug #2** - Texto do nome do item sobrescrito (perde quantidade)
+- [x] **Bug #3** - Acesso a `.textContent` em elemento `null` nos blocos `else`
+- [x] **Bug #4** - `total` exibindo valor incorreto (copiado de carrinho)
+- [x] **Bug #5** - Filtro pendente usa `item.valor > 0` em vez de `!item.checado`
+- [x] **Bug #6** - Atualização dos contadores de filtro dentro do `forEach` (desnecessário + `noCarrinho`/`pedenteFilter` undefined)
+- [x] **Bug #7** - Máscara jQuery executada antes do DOM carregar
+
+## Status Final:
+- [x] **TODAS AS CORREÇÕES APLICADAS COM SUCESSO ✅**
+- Arquivo corrigido: `src/pages/lista/lista.js`
 

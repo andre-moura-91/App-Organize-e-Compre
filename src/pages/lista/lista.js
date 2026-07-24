@@ -1,5 +1,3 @@
-$('#valor_input').mask("#.##0,00", {reverse: true});
-
 let carrinhosItens = []
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,6 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!itemInput || !valorInput || !addButton) return;
 
+    // Inicializa a máscara do campo valor APÓS o DOM carregar
+    if (typeof $('#valor_input').mask === 'function') {
+        $('#valor_input').mask("#.##0,00", {reverse: true});
+    }
 
     const upgradeButtonState = () => {
         addButton.disabled = itemInput.value.trim().length === 0 || valorInput.value.trim().length === 0;  
@@ -80,25 +82,17 @@ function renderizarItensValor(listaParaExibir = carrinhosItens) {
 
     listaParaExibir.forEach((item, i) => {
 
-        const i = carrinhosItens.indexOf(item);
-
         let itemLista = document.createElement('li');
 
         let checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.classList.add('meu-check');
         checkbox.checked = item.checado;
-        checkbox.onclick = () => {
-            item.checado = !item.checado;
-            renderizarItensValor();
-        };
 
         let texto = document.createElement('span');
-        texto.textContent = `${item.nome} (x${item.quantidade})`;
-
         let textoValor = document.createElement('span');
         let subtotalItem = item.quantidade * item.valor;
-        texto.textContent = item.nome;
+        texto.textContent = `${item.nome} (x${item.quantidade})`;
         textoValor.textContent = 'R$ ' + subtotalItem.toFixed(2).replace(".", ",");
         textoValor.className = 'item_valor';
 
@@ -127,30 +121,19 @@ function renderizarItensValor(listaParaExibir = carrinhosItens) {
         itemLimpar.textContent = 'x';
         itemLimpar.onclick = () => limparItem(i);
 
-        itemLista.append(checkbox, texto, itens,textoValor, itemLimpar);
+        itemLista.append(checkbox, texto, itens, textoValor, itemLimpar);
         listaCarrinho.appendChild(itemLista);
-
-        if (noCarrinho) {
-            noCarrinho.textContent = 'No Carrinho' + ' ('+ carrinhosItens.filter(item => item.checado).length + ')';
-        } else {
-            noCarrinho.textContent = 'No Carrinho' + '(0)';
-        }
-
-        if (pedenteFilter) {
-            pedenteFilter.textContent = 'Pendentes' + ' (' + carrinhosItens.filter(item => !item.checado).length + ')';
-        } else {            
-            pedenteFilter.textContent = 'Pendentes' + ' (0)';
-        }
 
     });
     
-
     let listaVazia = document.getElementById("carrinho_container");
+    if (listaVazia) {
         if (carrinhosItens.length > 0) {
-             listaVazia.style.display = 'none';
+            listaVazia.style.display = 'none';
         } else {
             listaVazia.style.display = 'flex';
         }
+    }
 
     atualizarTotal();
 }
@@ -195,62 +178,47 @@ function atualizarTotal() {
     let carrinhoElement = document.getElementById('carrinho');
     let totalElement = document.getElementById('total');
 
-    // Soma apenas itens checados: (valor * quantidade)
-    let somaTotal = carrinhosItens
+    // Soma de TODOS os itens (total geral)
+    let somaTotalGeral = carrinhosItens
+        .reduce((acc, item) => acc + item.valor * item.quantidade, 0);
+
+    // Soma apenas itens checados (no carrinho)
+    let somaCarrinho = carrinhosItens
         .filter(item => item.checado)
         .reduce((acc, item) => acc + item.valor * item.quantidade, 0);
 
-    let valorFormatado = 'R$ ' + somaTotal.toFixed(2).replace(".", ",");
+    // Soma de itens PENDENTES (não checados)
+    let somaPendente = carrinhosItens
+        .filter(item => !item.checado)
+        .reduce((acc, item) => acc + item.valor * item.quantidade, 0);
 
-    if (totalElement) totalElement.textContent = valorFormatado;
-    if (carrinhoElement) carrinhoElement.textContent = valorFormatado;
+    let totalGeralFormatado = 'R$ ' + somaTotalGeral.toFixed(2).replace(".", ",");
+    let carrinhoFormatado = 'R$ ' + somaCarrinho.toFixed(2).replace(".", ",");
+    let pendenteFormatado = 'R$ ' + somaPendente.toFixed(2).replace(".", ",");
 
-    let pendentValor = elementPendent;
-    let pedenteValor = carrinhosItens
-        .filter(item => item.valor > 0)
-        .reduce((acc, item) => acc + item.quantidade * item.valor, 0);
-        
-    let valorPedente = 'R$ ' + pedenteValor.toFixed(2).replace(".", ",");
-    if (pendentValor) pendentValor.textContent = valorPedente;
+    if (totalElement) totalElement.textContent = totalGeralFormatado;
+    if (carrinhoElement) carrinhoElement.textContent = carrinhoFormatado;
+    if (elementPendent) elementPendent.textContent = pendenteFormatado;
 
-    let totalConvert = valorFormatado.replace('R$ ', '').replace(/\./g, '').replace(',', '.');
-    let pedenteConvert = valorPedente.replace('R$ ', '').replace(/\./g, '').replace(',', '.');
-    let totalElementConvert = parseFloat(totalConvert);
-    let pedenteItensConvert = parseFloat(pedenteConvert);
-
-        if (totalElement.textContent !== 'R$ 0,00') {
-            if (elementPendent) elementPendent.textContent = 'R$ ' + (pedenteItensConvert - totalElementConvert).toFixed(2).replace(".", ",");
-        }
-
+    // --- Contagem de itens ---
     let qtnPedente = document.getElementById('qtn-pendente');
     let qtnCarrinho = document.getElementById('qtn-carrinho');
     let qtnTotal = document.getElementById('qtn-total');
 
     if (todosFilter) todosFilter.textContent = 'Todos' + ' (' + carrinhosItens.length + ')';
+    if (noCarrinho) noCarrinho.textContent = 'No Carrinho' + ' (' + carrinhosItens.filter(item => item.checado).length + ')';
+    if (pedenteFilter) pedenteFilter.textContent = 'Pendentes' + ' (' + carrinhosItens.filter(item => !item.checado).length + ')';
 
-    let itemTotal = carrinhosItens
-        .filter(item => item.checado)
-        .reduce((acc, item) => acc + item.quantidade, 0);
-    
-    let itemFormatado = itemTotal + ' Itens';
-    if (qtnTotal) qtnTotal.textContent = itemFormatado;
-    if (qtnCarrinho) qtnCarrinho.textContent = itemFormatado;
+    // Total de itens (soma das quantidades de TODOS os itens)
+    let qtdTotalGeral = carrinhosItens.reduce((acc, item) => acc + item.quantidade, 0);
+    // Total de itens no carrinho (checados)
+    let qtdCarrinho = carrinhosItens.filter(item => item.checado).reduce((acc, item) => acc + item.quantidade, 0);
+    // Total de itens pendentes (não checados)
+    let qtdPendente = carrinhosItens.filter(item => !item.checado).reduce((acc, item) => acc + item.quantidade, 0);
 
-    let quantidadeItens = carrinhosItens
-        .filter(item => item.quantidade)
-        .reduce((acc, item) => acc + item.quantidade, 0);
-
-    let pedenteItens = quantidadeItens + ' Itens';
-    if (qtnPedente) qtnPedente.textContent = pedenteItens;
-
-    let quantidadeTotal = itemFormatado.replace(' Itens', '');
-    let quantidadePendente = pedenteItens.replace(' Itens', '');
-    let qtnTotalConvert = parseInt(quantidadeTotal);
-    let qtnPendenteConvert = parseInt(quantidadePendente);
-    
-        if (qtnTotal.textContent !== '0 Itens') {
-                if (qtnPedente) qtnPedente.textContent = (qtnPendenteConvert - qtnTotalConvert) + ' Itens';
-            }
+    if (qtnTotal) qtnTotal.textContent = qtdTotalGeral + ' Itens';
+    if (qtnCarrinho) qtnCarrinho.textContent = qtdCarrinho + ' Itens';
+    if (qtnPedente) qtnPedente.textContent = qtdPendente + ' Itens';
 }
 
 // Funções auxiliares (Certifique-se que os IDs batem com seu HTML)
