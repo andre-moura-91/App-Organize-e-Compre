@@ -1,42 +1,46 @@
 @import url('../../styles/base/global.css');
 
 .container-navigation {
+    position: fixed;
     background-color: var(--cor-text1-branco);
     display: flex;
     width: 100%;
     height: 65px;
-    border-radius: 20px 20px 0px 0px;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
     box-shadow: 0px 1px 5px 1.0px rgba(92, 92, 92, 0.10);
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     gap: 5px;
     padding: 10px 10px 10px 10px;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 9999;
+    z-index: 1000;
 }
 
-a {
+/*.bottom-navbar {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 12px;
     flex-direction: column;
     font-family: var(--fonte-principal-titulo);
     text-decoration: none;
+    transition: all 0.3s ease;
+}*/
+
+.title-icon {
+    display: none;
+    
 }
 
-.titlle-icon {
-    position: absolute;
-    font-size: 14px;
-    color: var(--cor-bottombar-cinza);
-    margin-top: 36px;
-    z-index: 1;
-}
-
-.titlle-icon:hover:active {
+.title-icon.active {
     display: block;
+    position: relative;
+    font-size: 13px;
+    margin-top: 36px;
     color: var(--cor-principal-laranja);
     transition: all 0.3s ease;
 }
@@ -45,20 +49,31 @@ svg {
     transition: all 0.3s ease;
 }
 
-.home, .history, .cart-nav, .list {
+.nav-item {
     display: flex;
-    width: 65px;
+    position: relative;
+    width: 50px;
     height: 65px;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border: var(--cor-text1-branco) solid 7px;
     background-color: var(--cor-text1-branco);
     font-size: 22px;
+    text-decoration: none;
     color: var(--cor-bottombar-cinza);
+    transition: color 0.3s ease;
     z-index: 2;
 }
 
-.home:hover, .history:hover, .cart-nav:hover, .list:hover {
+.nav-item i {
+    position: relative;
+    transition: transform 0.2s ease;
+    z-index: 3;
+}
+
+.nav-item.active {
+    transform: translateY(-3px);
     margin-bottom: 45px;
     width: 65px;
     height: 65px;
@@ -71,10 +86,5 @@ svg {
     transition: all 0.3s ease;
 }
 
-.bottom-navbar {
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
+
 

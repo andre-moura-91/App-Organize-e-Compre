@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/pages/profile/perfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <title>Organize&Compre</title>
 </head>
 <body>
@@ -15,14 +15,13 @@
         <section class="nav">
             <span class="bg">ORG</span>
             <div class="header-top">
-                <img class="seta" src="/src/assets/icons/icons perfil/seta.svg" alt="Seta">
                 <h1 class="header-title">Perfil</h1>
             </div>
         </section>
         <section class="info-perfil">
             <img class="avatar" src="/src/assets/imagens/avatar.png" alt="Avatar de André Moura">
             <div class="user-info">
-                <h3 class="user-name">André Moura</h3>
+                <h3 class="user-name">Nome Sobrenome</h3>
                 <p class="user-email">coloque_seu@email.com</p>
             </div>
         </section>
@@ -61,7 +60,7 @@
             </div>
             <div class="row-card" onclick="showToast('Abrindo notificações...')">
                 <span class="icon-circle">
-                    <img src="/src/assets/icons/icons perfil/notificações.svg" alt="Notificações">
+                    <img src="/src/assets/icons/icons perfil/notificacoes.svg" alt="Notificações">
                 </span>
                 <span class="row-label">Notificações</span>
                 <span class="chevron">›</span>
@@ -96,6 +95,7 @@
                 <span class="row-label">Preciso de ajuda</span>
                 <span class="chevron">›</span>
             </div>
+            <p class="text-direitos">© 2026 Organize&Compre. Todos os direitos reservados.</p>
         </section>
         <div class="toast" id="toast-perfil"></div>
     </div>
@@ -103,11 +103,12 @@
     <!-- TELA: EDITAR PERFIL -->
     <div class="screen" id="screen-editar">
         <section class="nav">
-            <div class="header-top">
+            <span class="bg-editar">ORG</span>
+            <div class="editar-top">
                 <button class="back-btn" onclick="goTo('perfil')">
                     <img class="seta" src="/src/assets/icons/icons perfil/seta.svg" alt="Seta">
                 </button>
-                <h1 class="header-title">Editar Perfil</h1>
+                <h1 class="title-editar">Editar Perfil</h1>
             </div>
         </section>
         <section class="info-perfil">
@@ -121,7 +122,7 @@
             <div class="field">
                 <label for="nome">Nome</label>
                 <div class="input-wrap">
-                    <input type="text" id="nome" placeholder="André Moura Lucena">
+                    <input type="text" id="nome" placeholder="Seu nome completo aqui...">
                 </div>
             </div>
             <div class="field">
@@ -133,19 +134,21 @@
             <div class="field">
                 <label for="usuario">Usuário</label>
                 <div class="input-wrap">
-                    <input type="text" id="usuario" placeholder="@andre_moura">
+                    <input type="text" id="usuario" placeholder="@nome_usuário">
                 </div>
             </div>
             <div class="field">
                 <label for="genero">Gênero</label>
-                <div class="input-wrap">
-                    <img class="icon-setadown" src="/src/assets/icons/icons perfil/genero.svg" alt="Gênero">
-                    <select id="genero">
+                <div class="input-wrap-genero">
+                    <select class="input-genero" id="genero">
                         <option>Masculino</option>
                         <option>Feminino</option>
                         <option>Prefiro não dizer</option>
                         <option>Outro</option>
                     </select>
+                    <div class="conteiner-seta">
+                        <img class="icon-setadown" src="/src/assets/icons/icons perfil/seta down.svg" alt="Gênero">
+                    </div>
                 </div>
             </div>
             <div class="field">
@@ -159,14 +162,40 @@
                 </div>
             </div>
             <button class="save-btn" id="save-btn" onclick="saveProfile()">Salvar</button>
+            <p class="text-direitos">© 2026 Organize&Compre. Todos os direitos reservados.</p>
         </section>
 
         <div class="toast" id="toast-editar"></div>
     </div>
 </header>
+<footer>
+    <div class="container-navigation">
+        <a href="/src/pages/bem-vindo/saudacao.html" class="bottom-navbar">
+            <span class="home"><i class="ri-home-9-fill"></i></span>
+            <span class="titlle-icon">Início</span>
+        </a>
+        <a href="/src/pages/historico/historical.html" class="bottom-navbar">
+            <span class="history"><i class="ri-history-fill"></i></span>
+            <span class="titlle-icon">Histórico</span>
+        </a>
+        <a href="/src/pages/profile/perfil.html" class="bottom-navbar">
+            <span class="profile"><i class="ri-user-3-fill"></i></span>
+            <span class="titlle-icon">Perfil</span>
+        </a>
+        <a href="/src/pages/lista/lista.html" class="bottom-navbar">
+            <span class="cart-nav"><i class="ri-shopping-cart-2-fill"></i></span>
+            <span class="titlle-icon">Carrinho</span>
+        </a>
+        <a href="/src/pages/pre-lista/pre-lista.html" class="bottom-navbar">
+            <span class="list"><i class="ri-list-unordered"></i></span>
+            <span class="titlle-icon">Pré-lista</span>
+        </a>
+    </div>
+</footer>
 
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
     <script src="/src/pages/profile/perfil.js"></script>
+    <script src="/src/navigation/appNavigation.js" type="module"></script>
 </body>
 </html>

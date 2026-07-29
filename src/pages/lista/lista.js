@@ -92,7 +92,7 @@ function renderizarItensValor(listaParaExibir = carrinhosItens) {
         let texto = document.createElement('span');
         let textoValor = document.createElement('span');
         let subtotalItem = item.quantidade * item.valor;
-        texto.textContent = `${item.nome} (x${item.quantidade})`;
+        texto.textContent = `${item.nome}`;
         textoValor.textContent = 'R$ ' + subtotalItem.toFixed(2).replace(".", ",");
         textoValor.className = 'item_valor';
 

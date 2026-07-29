@@ -5,6 +5,7 @@
 body {
     background-color: var(--cor-principal-laranja);
     justify-content: center;
+    padding-bottom: 70px;
 }
 
 .bg-clean {

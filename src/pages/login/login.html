@@ -9,49 +9,59 @@
     <title>Organize&Compre</title>
 </head>
 <body>
-    <header class="header-login">
+<header class="header-login">
+    <div>
         <h1 class="title">Login</h1>
-            <p class="text-subtitle">Sua lista de compras inteligente começa
-            aqui. Por favor faça o login!</p>
-    </header>
-    <main class="main-login">
-        <form class="section-text">
+        <p class="text-subtitle">Sua lista de compras inteligente começa
+        aqui. Por favor faça o login!</p>
+    </div>
+</header>
+<main class="main-login">
+    <form class="section-input">
+        <div class="user-input">
             <label class="label" for="text-nome">NOME DO USUÁRIO</label>
             <input type="text" id="text-nome" class="input-nome" placeholder="Ex: João Silva..." required>
-
+        </div>
+        
+        <div class="password">
             <label class="label" for="text-password">SENHA</label>
-            <div class="conteiner-input">
+            <div class="pass-input">
                 <input type="password" id="text-password" class="input-password" placeholder="Sua senha aqui..." required>
                 <i id="password-line" class="ri-eye-line"></i>
                 <i id="password-offline" class="ri-eye-off-line"></i>
             </div>
-            <button id="esqueci-senha" class="btn-esqueci">Esqueci minha senha</button>
+        <button id="esqueci-senha" class="btn-esqueci">Esqueci minha senha</button>
+        </div>
+    </form>
 
-            <button type="submit" id="btn-entrar" onclick="entrar()" class="btn-login" >Entrar</button>
-        </form>
-        <section class="signup-section">
+    <section class="signup-section">
+        <button type="submit" id="btn-entrar" onclick="entrar()" class="btn-entrar" >Entrar</button>
+        <div class="line-geral">
+            <span class="line"></span>
             <p class="conect-text">ou conecte-se com</p>
-            <div class="social-conect">
-                <div class="conta">
-                    <img src="/src/assets/icons/google-logo.svg" alt="Google Logo" class="logo">
-                    <a href="https://mail.google.com" class="signup-link">Google</a>
-                </div>
-                <div class="conta">
-                    <img src="/src/assets/icons/facebook-logo.svg" alt="Facebook Logo" class="logo">
-                    <a href="https://www.facebook.com/?locale=pt_BR" class="signup-link">Facebook</a>
-                </div>
+            <span class="line"></span>
+        </div>
+        <div class="social-conect">
+            <div class="conta">
+                <img src="/src/assets/icons/google-logo.svg" alt="Google Logo" class="logo">
+                <a href="https://mail.google.com" class="signup-link">Google</a>
             </div>
-            <div class="cadastre-section">
-                <p class="text-cadastre">Novo por aqui?</p>
-                <a href="/src/pages/cadastro/cadastro.html" class="cadastre">Cadastre-se</a>
+            <div class="conta">
+                <img src="/src/assets/icons/facebook-logo.svg" alt="Facebook Logo" class="logo">
+                <a href="https://www.facebook.com/?locale=pt_BR" class="signup-link">Facebook</a>
             </div>
-        </section>
-    </main>
-    <footer class="footer-login">
-        <p class="text-footer">© 2026 Organize&Compre. Todos os direitos reservados.</p>
-    </footer>
+        </div>
+        <div class="cadastre-section">
+            <p class="text-cadastre">Novo por aqui?</p>
+            <a href="/src/pages/cadastro/cadastro.html" class="cadastre">Cadastre-se</a>
+        </div>
+    </section>
+</main>
+<footer class="footer-login">
+    <p class="text-footer">© 2026 Organize&Compre. Todos os direitos reservados.</p>
+</footer>
+
 
     <script src="/src/pages/login/login.js" type="module"></script>
-
 </body>
 </html>
