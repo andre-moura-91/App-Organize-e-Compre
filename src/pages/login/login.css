@@ -3,7 +3,7 @@
 /* 1. ESTILOS ESPECÍFICOS PARA A PÁGINA DE LOGIN */
 body {
   display: flex;
-  background-color: var(--cor-bg-clara);
+  background-color: var(--cor-principal-laranja);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -11,47 +11,53 @@ body {
 
 .header-login {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: flex-start;
-  gap: 10px;
-  margin-right: 120px;
+  gap: 4px;
+  margin-top: 30px;
+  padding: 0 30px;
+}
+
+.main-login {
+  background-color: var(--cor-bg-clara);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   margin-top: 20px;
+  border-radius: 20px 20px 0px 0px;
 }
 
-.logo-cart {
-  width: 35px;
-  margin-bottom: 20px;
-  margin-top: 10px;
-}
-
-.title-logo {
-  font-family: var(--fonte-logo);
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--cor-principal-laranja);
-  margin-bottom: 15px;
+.footer-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  font-size: 10px;
+  background-color: var(--cor-bg-clara);
+  width: 100%;
+  height: 90px;
 }
 
 .section-text {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 12px 30PX;
+  margin-top: 30px;
+  gap: 20px;
+  padding: 0 30px;
 }
 
 .title {
   font-family: var(--fonte-principal-titulo);
   font-size: 30px;
-  color: var(--cor-text2-preto);
-  padding: 0 5px;
+  color: var(--cor-text1-branco);
 }
 
 .text-subtitle {
   font-family: var(--fonte-texto);
-  font-size: 14px;
-  color: var(--cor-subtitulo-cinza);
-  padding: 0 5px;
+  font-size: 15px;
+  font-weight: 200;
+  color: var(--cor-text1-branco);
 }
 
 .conteiner-input {
@@ -192,7 +198,7 @@ input:-webkit-autofill:focus {
   font-weight: 500;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 10px;
   margin-bottom: 11px;
   color: var(--cor-subtitulo-cinza);
 }

@@ -116,3 +116,4 @@ Consulte o arquivo `TODO.md` na raiz do projeto para acompanhar correções e me
 ## Licença
 
 Sem licença definida no projeto até o momento. Se necessário, defina uma licença (MIT, Apache-2.0 etc.).
+

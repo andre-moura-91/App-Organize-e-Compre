@@ -73,41 +73,6 @@ function adicionarItem() {
 }
 
 
-let todosLista = document.getElementById('todos-lista');
-let noCarrinho = document.getElementById('no-carrinho');
-let listaPedente = document.getElementById('lista-pendentes');
-
-const abas = {
-    todosLista: document.getElementById('todos-lista'),
-    noCarrinho: document.getElementById('no-carrinho'),
-    listaPedente: document.getElementById('lista-pendentes')
-};
-
-const ativarAbaVisualmente = (abaAtiva) => {
-    Object.values(abas).forEach(aba => aba.classList.remove('ativa'));
-    abaAtiva.classList.add('ativa');
-};
-
-abas.todosLista.addEventListener('click', () => {
-    ativarAbaVisualmente(abas.todosLista);
-    renderizarItensValor();
-});
-
-abas.noCarrinho.addEventListener('click', function() {
-    ativarAbaVisualmente(abas.noCarrinho);
-
-    carrinhosItens.filter(item => item.checado);
-    renderizarItensValor();
-    return;
-});
-
-abas.listaPedente.addEventListener('click', () => {
-    ativarAbaVisualmente(abas.listaPedente);
-
-    const itensFiltrados = carrinhosItens.filter(item => !item.checado).length;
-    renderizarItensValor(itensFiltrados);
-});
-
 function renderizarItensValor() {
     const listaCarrinho = document.getElementById('carrinhoLista');
     if (!listaCarrinho) return;
@@ -168,10 +133,10 @@ function renderizarItensValor() {
             noCarrinho.textContent = 'No Carrinho' + '(0)';
         }
 
-        if (listaPedente) {
-            listaPedente.textContent = 'Pendentes' + ' (' + carrinhosItens.filter(item => !item.checado).length + ')';
+        if (pedenteFilter) {
+            pedenteFilter.textContent = 'Pendentes' + ' (' + carrinhosItens.filter(item => !item.checado).length + ')';
         } else {            
-            listaPedente.textContent = 'Pendentes' + ' (0)';
+            pedenteFilter.textContent = 'Pendentes' + ' (0)';
         }
 
     });
@@ -186,6 +151,41 @@ function renderizarItensValor() {
 
     atualizarTotal();
 }
+
+let todosFilter = document.getElementById('todos-lista');
+let noCarrinho = document.getElementById('no-carrinho');
+let pedenteFilter = document.getElementById('lista-pendentes');
+
+const abas = {
+    todosFilter: document.getElementById('todos-lista'),
+    noCarrinho: document.getElementById('no-carrinho'),
+    pedenteFilter: document.getElementById('lista-pendentes')
+};
+
+const ativarAbaVisualmente = (abaAtiva) => {
+    Object.values(abas).forEach(aba => aba.classList.remove('ativa'));
+    abaAtiva.classList.add('ativa');
+};
+
+abas.todosFilter.addEventListener('click', () => {
+    ativarAbaVisualmente(abas.todosFilter);
+    renderizarItensValor();
+});
+
+abas.noCarrinho.addEventListener('click', () => {
+    const itensNoCarrinho = carrinhosItens.filter(item => item.checado === true);
+    
+    ativarAbaVisualmente(abas.noCarrinho);
+    renderizarItensValor(itensNoCarrinho);
+});
+
+abas.pedenteFilter.addEventListener('click', () => {
+    ativarAbaVisualmente(abas.pedenteFilter);
+
+    const itensPedentes = carrinhosItens.filter(item => item.checado === false);
+    renderizarItensValor(itensPedentes);
+});
+
 let elementPendent = document.getElementById('pendente');
 
 function atualizarTotal() {
@@ -209,7 +209,6 @@ function atualizarTotal() {
         
     let valorPedente = 'R$ ' + pedenteValor.toFixed(2).replace(".", ",");
     if (pendentValor) pendentValor.textContent = valorPedente;
-    console.log(pendentValor);
 
     let totalConvert = valorFormatado.replace('R$ ', '').replace(/\./g, '').replace(',', '.');
     let pedenteConvert = valorPedente.replace('R$ ', '').replace(/\./g, '').replace(',', '.');
@@ -224,7 +223,7 @@ function atualizarTotal() {
     let qtnCarrinho = document.getElementById('qtn-carrinho');
     let qtnTotal = document.getElementById('qtn-total');
 
-    if (todosLista) todosLista.textContent = 'Todos' + ' (' + carrinhosItens.length + ')';
+    if (todosFilter) todosFilter.textContent = 'Todos' + ' (' + carrinhosItens.length + ')';
 
     let itemTotal = carrinhosItens
         .filter(item => item.checado)

@@ -41,8 +41,9 @@ function entrar(event) {
     localStorage.setItem('senha', senhaInput);
 
     alert('Login realizado com sucesso!');
-    window.location.href = '/src/pages/bem-vindo/saudacao.html';
+    window.location.href = '/src/pages/onboarding/onboarding-1.html';
 }
+
 
 esqueciSenha.addEventListener('click', function() {
     window.location.href = '/src/pages/password/redefinir-senha.html';
