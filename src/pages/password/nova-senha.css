@@ -1,0 +1,71 @@
+@import url('../../styles/base/global.css');
+
+/* 1. ESTILOS ESPECÍFICOS PARA A PÁGINA DE LOGIN */
+body {
+  display: flex;
+  background-color: var(--cor-bg-clara);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.title-logo {
+  font-family: var(--fonte-logo);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--cor-principal-laranja);
+  margin-bottom: 15px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.section-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 30PX;
+}
+
+.title {
+  font-family: var(--fonte-principal-titulo);
+  font-size: 30px;
+  color: var(--cor-text2-preto);
+  padding: 0 5px;
+}
+
+.text-subtitle {
+  font-family: var(--fonte-texto);
+  font-size: 14px;
+  color: var(--cor-subtitulo-cinza);
+  padding: 0 5px;
+}
+
+.btn-acessar {
+  background-color: var(--cor-principal-laranja);
+  color: var(--cor-text1-branco);
+  width: 100%;
+  padding: 10px 15px;
+  text-align: center;
+  font-family: var(--fonte-principal-titulo);
+  font-weight: 500;
+  border-radius: 9999px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  margin-top: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-continuar:hover {
+  background-color: #f89729bb;
+  transform: scale(1.01);
+  transition: all 0.3s ease;
+}

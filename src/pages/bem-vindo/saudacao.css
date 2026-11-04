@@ -1,0 +1,227 @@
+@import url('/src/styles/base/global.css');
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  background-color: #f9fafb;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Splash Screen Styles */
+.splash-container {
+  position: fixed;
+  inset: 0;
+  background-color: #FF8A00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.5s ease-out;
+}
+
+/* Classes customizadas para suavidade extrema nas transições */
+.transition-slow {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+        
+.transition-medium {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animação do botão "pulsar" levemente */
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s infinite ease-in-out;
+}
+
+.bg-marca {
+  font-family: 'manrope', sans-serif;
+  display: flex;
+  position: absolute;
+  bottom: -80px;
+  z-index: 5;
+  opacity: 0;
+  font-size: 280px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.068);
+  letter-spacing: -3px;
+  text-align: center;
+  transition: transform 0.8s ease-out;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 0 2rem;
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-180px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.logo-card-hidden {
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.card-v2 {
+  display: flex;
+}
+
+@keyframes popIn {
+  0% { transform: scale(1); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.text-area-hidden {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.main-title {
+  font-size: 38px;
+  font-family: manrope, sans-serif;
+  font-weight: 800;
+  color: white;
+  line-height: 38px;
+  letter-spacing: -1.5px;
+}
+
+.line {
+  display: flex;
+  justify-content: center;
+  width: 15%;
+  height: 1px;
+  padding: 2px;
+  margin-left: 42%;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  border-radius: 9999px;
+  background-color: var(--cor-bg-clara);
+  opacity: 0.5;
+}
+
+.welcome-msg {
+  margin-bottom: 3rem;
+}
+
+.welcome-title {
+  font-family: nunito, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 3px;
+}
+
+#user-name {
+  font-family: nunito, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
+
+.welcome-subtitle {
+  font-family: inter, sans-serif;
+  font-size: 13px;
+  color: #f3f4f6d0;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.35px;
+  max-width: 300px;
+  margin: 0px 15px;
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+}
+
+.btn-primary {
+  background: white;
+  color: #FF8A00;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  gap: 0.75rem;
+  margin-bottom: 16px;
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 90%;
+  cursor: pointer;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-primary:hover {
+  background: #f9fafb56;
+  color: var(--cor-bg-clara);
+  transform: scale(1.02);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.btn-secundary {
+  background: rgba(255, 255, 255, 0.151);
+  color: var(--cor-text1-branco);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  gap: 0.75rem;
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 90%;
+  cursor: pointer;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-secundary:hover {
+  background: #f9fafb56;
+  transform: scale(1.02);
+}
+
+.btn-secundary:active {
+  transform: scale(0.95);
+}
+
+/* Small utility classes used by JS to reveal/hide elements */
+.opacity-0 { opacity: 0 !important; }
+.opacity-100 { opacity: 1 !important; }
+.scale-50 { transform: scale(0.5) !important; }
+.scale-100 { transform: scale(1) !important; }

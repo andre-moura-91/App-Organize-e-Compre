@@ -1,0 +1,310 @@
+@import url('../../styles/base/global.css');
+
+/* 1. ESTILOS ESPECÍFICOS PARA A PÁGINA DE LOGIN */
+body {
+  display: flex;
+  background-color: var(--cor-principal-laranja);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+  margin-top: 30px;
+  padding: 0 30px;
+}
+
+.main-login {
+  background-color: var(--cor-bg-clara);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.footer-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 10px;
+  background-color: var(--cor-bg-clara);
+  width: 100%;
+  height: 90px;
+}
+
+.title {
+  font-family: var(--fonte-principal-titulo);
+  font-size: 30px;
+  color: var(--cor-text1-branco);
+}
+
+.text-subtitle {
+  font-family: var(--fonte-texto);
+  font-size: 15px;
+  font-weight: 200;
+  line-height: 1.3;
+  letter-spacing: 0.8px;
+  color: var(--cor-text1-branco);
+}
+
+.section-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  gap: 20px;
+  padding: 0 30px;
+}
+
+.pass-input {
+  background-color: var(--cor-text1-branco);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 12px;
+  gap: 5px;
+}
+
+.input-nome {
+  background-color: var(--cor-text1-branco);
+  width: 100%;
+  padding: 15px 15px;
+  border: none;
+  color: var(--cor-subtitulo-cinza);
+  font-family: var(--fonte-texto);
+  font-weight: 300;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.input-password {
+  background-color: var(--cor-text1-branco);
+  width: 100%;
+  padding: 15px 0px 15px 15px;
+  border: none;
+  color: var(--cor-subtitulo-cinza);
+  font-family: var(--fonte-texto);
+  font-weight: 300;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+input:focus-visible {
+    outline: none;
+    
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    
+    -webkit-text-fill-color: var(--cor-subtitulo-cinza) !important;
+    
+    caret-color: var(--cor-subtitulo-cinza);
+}
+
+.label {
+  font-family: var(--fonte-texto);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cor-subtitulo-cinza);
+  margin-top: 15px;
+  letter-spacing: 1px;
+  padding: 0 5px;
+}
+
+#password-line, #password-offline {
+  cursor: pointer;
+  color: var(--cor-icons-cinza-escuro);
+  font-size: 22px;
+  margin-right: 15px;
+}
+
+.btn-esqueci {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--cor-bg-clara);
+  font-family: var(--fonte-texto);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--cor-subtitulo-cinza);
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.btn-esqueci:hover {
+  color: var(--cor-icons-cinza-escuro);
+}
+
+::placeholder {
+  font-family: var(--fonte-texto);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--cor-icons-cinza-escuro);
+}
+
+.btn-entrar {
+  background-color: var(--cor-principal-laranja);
+  color: var(--cor-text1-branco);
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--fonte-principal-titulo);
+  font-weight: 500;
+  border-radius: 9999px;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  margin-top: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-entrar:hover {
+  background-color: #f89729bb;
+  transition: all 0.3s ease;
+}
+
+.signup-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 40px;
+}
+
+.social-conect {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.line {
+  width: 75px;
+  height: 1px;
+  background-color: var(--cor-bottombar-cinza);
+  margin: 10px 0;
+}
+
+.line-geral {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.conect-text {
+  font-family: var(--fonte-texto);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 11px;
+  color: var(--cor-subtitulo-cinza);
+}
+
+.conta {
+  display: flex;
+  background-color: #ffffff;
+  width: 140px;
+  padding: 0 0 0 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  flex-direction: row;
+  font-family: var(--fonte-texto);
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.signup-link {
+  font-family: var(--fonte-texto);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 10px;
+  color: var(--cor-text2-preto);
+  text-decoration: none;
+}
+
+.conta:hover {
+  transform: scale(0.97);
+  transition: all 0.3s ease;
+}
+
+.logo {
+  width: 20px;
+}
+
+.cadastre-section {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 25px;
+  gap: 10px;
+}
+
+.text-cadastre {
+  font-family: var(--fonte-texto);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--cor-subtitulo-cinza);
+}
+
+.cadastre {
+  font-family: var(--fonte-texto);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--cor-principal-laranja);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cadastre:hover {
+  color: rgb(253, 204, 144);
+  transition: all 0.3s ease;
+}
+
+.footer-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 10px;
+  background-color: var(--cor-bg-clara);
+  width: 100%;
+  height: 120px;
+}
+
+.text-footer {
+  font-family: var(--fonte-texto);
+  font-size: 10px;
+  font-weight: 300;
+  color: var(--cor-subtitulo-cinza);
+  text-align: center;
+  margin-top: 50px;
+  padding: 0 30px;
+}

@@ -1,0 +1,48 @@
+/* global.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+/* 1. VARIÁVEIS GLOBAIS (Disponíveis para todos os outros CSS) */
+:root {
+  /* Fontes */
+  --fonte-logo: 'manrope', sans-serif;
+  --fonte-principal-titulo: 'nunito', sans-serif;
+  --fonte-texto: 'inter', sans-serif;
+
+  /* Cores base */
+  --cor-principal-laranja: #FF8C00;
+  --cor-text1-branco: #ffffff;
+  --cor-text2-preto: #2F2E2E;
+  --cor-bg-clara: #F9F6F5;
+  --cor-icons-cinza-escuro: #686767;
+  --cor-input-cinza: #eeeeee;
+  --cor-subtitulo-cinza: #5C5B5B;
+  --cor-valor-carrinho: #43cfcf;
+  --cor-bottombar-cinza: #b6b6b6;
+  --cor-delete: #FD7F7F;
+}
+
+/* 2. RESET CSS (Padroniza o comportamento dos elementos) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+}
+
+/* 3. FORMATAÇÃO BASE E HERANÇA */
+body {
+  /* Ao aplicar aqui, todos os textos do site herdam essa fonte automaticamente */
+  font-family: var(--fonte-logo, var(--fonte-principal-titulo, var(--fonte-texto)));
+  background-color: var(--cor-principal-laranja, var(--cor-bg-clara, var(--cor-input-cinza)));
+  color: var(--cor-text2-preto, var(--cor-text1-branco, var(--cor-icons-cinza-escuro, var(--cor-principal-laranja, var(--cor-subtitulo-cinza, var(--cor-input-cinza, var(--cor-bottombar-cinza, var(--cor-valor-carrinho, var(--cor-delete)))))))));
+  line-height: 1.6;
+}
+
+/* Aplicando a fonte de títulos globalmente */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fonte-principal-titulo);
+  font-weight: 700;
+}

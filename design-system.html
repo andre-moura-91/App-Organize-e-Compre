@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System — Organize &amp; Compre</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --color-bg: #f9f6f5;
+    --color-surface: #ffffff;
+    --color-border: rgba(0,0,0,0.08);
+    --color-border-strong: rgba(0,0,0,0.14);
+    --color-text-primary: #2f2e2e;
+    --color-text-secondary: #5c5b5b;
+    --color-text-muted: #afacac;
+    --color-primary: #fd8b00;
+    --color-primary-alt: #ff8c00;
+    --color-primary-light: #fff0e7;
+    --color-primary-tint: rgba(253,139,0,0.10);
+    --color-danger: #b02500;
+    --color-success: #16a34a;
+    --color-gold: #ffd33a;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-pill: 9999px;
+    --radius-logo: 32px;
+    --font-display: 'Manrope', sans-serif;
+    --font-heading: 'Nunito', sans-serif;
+    --font-cta: 'Nunito Sans', sans-serif;
+    --font-numeric: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&family=Nunito:wght@600;700&family=Nunito+Sans:wght@700&family=Plus+Jakarta+Sans:wght@800&family=Inter:wght@400;500;600;700&display=swap');
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    padding: 40px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .page-header {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 0.5px solid var(--color-border-strong);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .logo-mark {
+    width: 52px; height: 52px;
+    background: white;
+    border-radius: var(--radius-logo);
+    display: flex; align-items: center; justify-content: center;
+    border: 0.5px solid var(--color-border-strong);
+    flex-shrink: 0;
+  }
+  .page-header-text { flex: 1; }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: 28px; font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -1px;
+  }
+  .page-subtitle { font-size: 13px; color: var(--color-text-secondary); margin-top: 2px; }
+
+  .ds-section { margin-bottom: 48px; }
+  .ds-label {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid var(--color-border);
+  }
+  .ds-card {
+    background: var(--color-surface);
+    border: 0.5px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+  }
+  .ds-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .ds-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+
+  /* SWATCHES */
+  .swatch-group { display: flex; gap: 10px; flex-wrap: wrap; }
+  .swatch { width: 88px; }
+  .swatch-color { height: 60px; border-radius: var(--radius-sm); margin-bottom: 6px; }
+  .swatch-name { font-size: 11px; font-weight: 600; color: var(--color-text-primary); }
+  .swatch-hex { font-size: 10px; color: var(--color-text-secondary); font-family: monospace; }
+  .swatch-group-label { font-size: 11px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 10px; margin-top: 16px; text-transform: uppercase; letter-spacing: 1px; }
+  .swatch-group-label:first-child { margin-top: 0; }
+
+  /* TYPOGRAPHY */
+  .type-row { display: flex; flex-direction: column; }
+  .type-sample {
+    display: flex; align-items: baseline; gap: 20px;
+    padding: 14px 0;
+    border-bottom: 0.5px solid var(--color-border);
+  }
+  .type-sample:last-child { border-bottom: none; }
+  .type-meta { min-width: 200px; flex-shrink: 0; }
+  .type-token { font-size: 11px; font-weight: 600; color: var(--color-text-secondary); font-family: monospace; }
+  .type-spec { font-size: 10px; color: var(--color-text-muted); margin-top: 3px; line-height: 1.5; }
+
+  /* BUTTONS */
+  .btn-primary {
+    background: var(--color-primary); color: var(--color-primary-light);
+    border: none; border-radius: var(--radius-pill);
+    padding: 14px 28px; font-size: 16px; font-weight: 700;
+    cursor: pointer; font-family: var(--font-cta);
+    box-shadow: 0 8px 24px rgba(140,74,0,0.20);
+    display: inline-block;
+  }
+  .btn-secondary {
+    background: transparent; color: var(--color-primary);
+    border: 1.5px solid var(--color-primary); border-radius: var(--radius-pill);
+    padding: 13px 28px; font-size: 16px; font-weight: 700;
+    cursor: pointer; font-family: var(--font-cta); display: inline-block;
+  }
+  .btn-rounded {
+    background: var(--color-primary); color: var(--color-primary-light);
+    border: none; border-radius: var(--radius-md);
+    padding: 14px 28px; font-size: 16px; font-weight: 700;
+    cursor: pointer; font-family: var(--font-cta); display: inline-block;
+  }
+  .btn-ghost {
+    background: transparent; color: var(--color-primary);
+    border: none; font-size: 14px; font-weight: 700;
+    cursor: pointer; font-family: var(--font-cta); display: inline-block;
+  }
+  .btn-social {
+    background: var(--color-surface);
+    border: 0.5px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    padding: 14px 24px; font-size: 14px;
+    color: var(--color-text-primary); cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 3px 4px rgba(0,0,0,0.05);
+    font-family: var(--font-body);
+  }
+  .btn-icon {
+    width: 40px; height: 40px;
+    background: var(--color-primary-tint);
+    border-radius: var(--radius-pill);
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer; border: none;
+  }
+  .btn-label { font-size: 10px; color: var(--color-text-muted); margin-top: 6px; text-align: center; letter-spacing: 1px; text-transform: uppercase; }
+  .btn-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+
+  /* INPUTS */
+  .input-label-txt {
+    font-size: 11px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--color-text-secondary);
+    margin-bottom: 6px; display: block;
+  }
+  .input-field {
+    width: 100%; background: var(--color-surface);
+    border: 0.5px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    padding: 16px 20px; font-size: 15px;
+    color: var(--color-text-muted); font-family: var(--font-body);
+    outline: none;
+  }
+  .input-field-sm {
+    width: 100%; background: var(--color-surface);
+    border: 0.5px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    padding: 11px 14px; font-size: 14px;
+    color: var(--color-text-primary); font-family: var(--font-body);
+    outline: none;
+  }
+  .input-wrap { display: flex; flex-direction: column; flex: 1; min-width: 180px; }
+  .input-plus {
+    width: 48px; height: 42px;
+    background: var(--color-surface);
+    border: 0.5px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    font-size: 20px; font-weight: 700; color: var(--color-primary);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* LIST ITEMS */
+  .list-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; background: var(--color-surface);
+    border-radius: var(--radius-sm);
+    border: 0.5px solid var(--color-border);
+  }
+  .check-icon {
+    width: 18px; height: 18px; border-radius: 4px;
+    background: var(--color-primary); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .check-icon.unchecked { background: var(--color-border-strong); }
+  .item-name { font-size: 13px; flex: 1; color: var(--color-text-primary); }
+  .item-name.done { color: var(--color-text-muted); text-decoration: line-through; }
+  .item-qty { font-size: 12px; color: var(--color-text-muted); min-width: 48px; }
+  .item-price { font-size: 13px; font-weight: 600; color: var(--color-text-primary); min-width: 64px; text-align: right; }
+  .item-x { width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; opacity: 0.25; cursor: pointer; font-size: 11px; }
+
+  /* STAT CARDS */
+  .stat-bar { display: flex; gap: 1px; margin-top: 12px; }
+  .stat-cell {
+    flex: 1; background: var(--color-surface);
+    border: 0.5px solid var(--color-border);
+    border-radius: var(--radius-sm); padding: 12px 14px;
+  }
+  .stat-cell-label { font-size: 9px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 4px; }
+  .stat-cell-value { font-size: 14px; font-weight: 700; color: var(--color-text-primary); font-family: var(--font-body); }
+  .stat-cell-sub { font-size: 10px; color: var(--color-text-muted); margin-top: 2px; }
+
+  /* TOTAL CARD */
+  .total-card {
+    background: var(--color-surface);
+    border: 0.5px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    padding: 24px 28px; position: relative; overflow: hidden;
+  }
+  .total-label { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 6px; }
+  .total-curr { font-size: 18px; font-weight: 600; color: var(--color-primary); font-family: var(--font-heading); }
+  .total-value {
+    font-size: 42px; font-weight: 800; color: var(--color-text-primary);
+    line-height: 1.1; letter-spacing: -2px; font-family: var(--font-numeric);
+  }
+  .total-trend { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+  .trend-badge { font-size: 12px; font-weight: 600; color: var(--color-danger); display: flex; align-items: center; gap: 3px; }
+  .trend-txt { font-size: 12px; color: var(--color-text-secondary); }
+  .blur-orb {
+    position: absolute; top: -16px; right: -16px;
+    width: 96px; height: 96px;
+    background: rgba(253,139,0,0.07); border-radius: 50%;
+  }
+
+  /* HISTORY */
+  .section-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .section-heading { font-size: 15px; font-weight: 600; color: var(--color-text-primary); font-family: var(--font-heading); }
+  .section-link { font-size: 12px; color: var(--color-primary); font-weight: 600; cursor: pointer; }
+  .history-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 0; border-bottom: 0.5px solid var(--color-border);
+  }
+  .history-item:last-child { border-bottom: none; }
+  .hist-icon-wrap {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--color-primary-tint);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .hist-info { flex: 1; }
+  .hist-name { font-size: 13px; font-weight: 600; color: var(--color-text-primary); }
+  .hist-date { font-size: 11px; color: var(--color-text-muted); margin-top: 2px; }
+  .hist-price { font-size: 14px; font-weight: 600; color: var(--color-text-primary); }
+
+  /* MONTH PILLS */
+  .month-pill {
+    display: inline-flex; padding: 10px 20px;
+    border-radius: var(--radius-pill); font-size: 14px;
+    font-weight: 700; cursor: pointer;
+    font-family: var(--font-cta);
+  }
+  .month-pill.active { background: var(--color-primary); color: white; }
+  .month-pill.inactive { background: var(--color-surface); color: var(--color-text-secondary); border: 0.5px solid var(--color-border); }
+
+  /* TAGS */
+  .tag {
+    display: inline-flex; align-items: center;
+    padding: 4px 12px; border-radius: var(--radius-pill);
+    font-size: 11px; font-weight: 600;
+  }
+  .tag-primary { background: rgba(253,139,0,0.12); color: #c46900; }
+  .tag-success { background: rgba(22,163,74,0.12); color: #15803d; }
+  .tag-danger { background: rgba(176,37,0,0.12); color: #b02500; }
+  .tag-neutral { background: #f1eeeb; color: var(--color-text-secondary); }
+
+  /* DIVIDER */
+  .divider-row { display: flex; align-items: center; gap: 12px; }
+  .divider-line { flex: 1; height: 0.5px; background: var(--color-border-strong); opacity: 0.5; }
+  .divider-txt { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--color-text-muted); white-space: nowrap; }
+
+  /* NAV */
+  .topbar {
+    background: var(--color-surface);
+    border: 0.5px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    padding: 14px 20px; display: flex; align-items: center; gap: 12px;
+  }
+  .topbar-back { width: 18px; height: 18px; background: var(--color-border-strong); border-radius: 3px; opacity: 0.5; }
+  .topbar-title { font-size: 15px; font-weight: 600; flex: 1; color: var(--color-text-primary); font-family: var(--font-heading); }
+  .topbar-icon { width: 22px; height: 18px; background: var(--color-border-strong); border-radius: 3px; opacity: 0.35; }
+  .navbar {
+    background: var(--color-surface);
+    border: 0.5px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    padding: 10px 0; display: flex; align-items: center;
+  }
+  .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
+  .nav-icon { width: 22px; height: 18px; border-radius: 4px; background: var(--color-border-strong); opacity: 0.4; }
+  .nav-icon.active { background: var(--color-primary); opacity: 1; }
+  .nav-lbl { font-size: 10px; color: var(--color-text-muted); font-family: var(--font-body); }
+  .nav-lbl.active { color: var(--color-primary); font-weight: 600; }
+
+  /* ICONS */
+  .icon-grid { display: flex; flex-wrap: wrap; gap: 14px; }
+  .icon-cell { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 60px; }
+  .icon-box {
+    width: 44px; height: 44px;
+    background: var(--color-surface);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    border: 0.5px solid var(--color-border-strong);
+  }
+  .icon-name { font-size: 9px; color: var(--color-text-muted); text-align: center; line-height: 1.4; }
+
+  /* SPACING */
+  .spacing-row { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+  .sp-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+  .sp-block { background: rgba(253,139,0,0.25); border-radius: 3px; border: 1px solid rgba(253,139,0,0.4); }
+  .sp-val { font-size: 10px; color: var(--color-text-muted); font-family: monospace; }
+
+  /* RADIUS */
+  .radius-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; }
+  .radius-sample { background: rgba(253,139,0,0.18); border: 1.5px solid rgba(253,139,0,0.45); }
+  .radius-lbl { font-size: 10px; color: var(--color-text-muted); font-family: monospace; margin-top: 5px; text-align: center; }
+
+  /* SPLASH */
+  .splash-card {
+    background: var(--color-primary); border-radius: var(--radius-md);
+    padding: 28px 24px; position: relative; overflow: hidden;
+  }
+  .splash-title {
+    font-size: 24px; font-weight: 800; color: white;
+    font-family: var(--font-display); letter-spacing: -0.8px; margin-bottom: 6px;
+  }
+  .splash-sub { font-size: 11px; color: rgba(255,255,255,0.75); letter-spacing: 0.6px; text-transform: uppercase; }
+  .splash-orb-1 { position: absolute; top: -30px; right: -30px; width: 130px; height: 130px; background: rgba(255,255,255,0.08); border-radius: 50%; }
+  .splash-orb-2 { position: absolute; bottom: -40px; left: -30px; width: 110px; height: 110px; background: rgba(0,0,0,0.06); border-radius: 50%; }
+  .splash-logo-wrap { width: 56px; height: 56px; background: white; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .splash-btn {
+    margin-top: 22px; background: white; color: var(--color-primary);
+    border: none; border-radius: var(--radius-pill);
+    padding: 12px 24px; font-size: 15px; font-weight: 700;
+    cursor: pointer; display: inline-flex; align-items: center;
+    gap: 8px; font-family: var(--font-cta);
+  }
+
+  /* FONTS TABLE */
+  .font-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+  .font-item { padding: 14px; background: var(--color-bg); border-radius: var(--radius-sm); border: 0.5px solid var(--color-border); }
+  .font-name { font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--color-text-primary); }
+  .font-detail { font-size: 10px; color: var(--color-text-secondary); line-height: 1.7; }
+  .font-preview { font-size: 15px; margin-top: 8px; color: var(--color-primary); }
+
+  /* SEPARATORS */
+  hr.ds-hr { border: none; border-top: 0.5px solid var(--color-border); margin: 32px 0; }
+
+  .note { font-size: 11px; color: var(--color-text-muted); margin-top: 10px; line-height: 1.6; }
+
+  @media (max-width: 600px) {
+    body { padding: 24px 16px; }
+    .type-sample { flex-direction: column; gap: 6px; }
+    .type-meta { min-width: auto; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="logo-mark">
+      <svg width="30" height="30" viewBox="0 0 28 28" fill="none">
+        <rect width="28" height="28" rx="6" fill="#fd8b00"/>
+        <path d="M4 8h3l2 8h10l2-6H8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="11" cy="19" r="1.5" fill="white"/>
+        <circle cx="18" cy="19" r="1.5" fill="white"/>
+        <path d="M14 10v5M11.5 12.5l2.5 2.5 2.5-2.5" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="page-header-text">
+      <div class="page-title">Organize &amp; Compre — Design System</div>
+      <div class="page-subtitle">Tipografia · Paleta · Botões · Componentes · Ícones · Espaçamento</div>
+    </div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <span class="tag tag-primary">v1.0</span>
+      <span class="tag tag-neutral">Mobile First</span>
+    </div>
+  </div>
+
+  <!-- 01 COLORS -->
+  <div class="ds-section">
+    <div class="ds-label">01 — Paleta de Cores</div>
+    <div class="ds-card">
+      <div class="swatch-group-label">Cores Primárias</div>
+      <div class="swatch-group">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#fd8b00;"></div>
+          <div class="swatch-name">Primary</div>
+          <div class="swatch-hex">#fd8b00</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#ff8c00;"></div>
+          <div class="swatch-name">Orange Alt</div>
+          <div class="swatch-hex">#ff8c00</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#fff0e7; border:0.5px solid #fcd9bb;"></div>
+          <div class="swatch-name">Primary Light</div>
+          <div class="swatch-hex">#fff0e7</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:rgba(253,139,0,0.12); border:0.5px solid rgba(253,139,0,0.3);"></div>
+          <div class="swatch-name">Primary Tint</div>
+          <div class="swatch-hex">12% opacity</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#c46900;"></div>
+          <div class="swatch-name">Hover</div>
+          <div class="swatch-hex">#c46900</div>
+        </div>
+      </div>
+
+      <div class="swatch-group-label">Neutros &amp; Superfícies</div>
+      <div class="swatch-group">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#f9f6f5; border:0.5px solid #e8e3e1;"></div>
+          <div class="swatch-name">Background</div>
+          <div class="swatch-hex">#f9f6f5</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#ffffff; border:0.5px solid #e0dcda;"></div>
+          <div class="swatch-name">Surface</div>
+          <div class="swatch-hex">#ffffff</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#2f2e2e;"></div>
+          <div class="swatch-name">Text Dark</div>
+          <div class="swatch-hex">#2f2e2e</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#5c5b5b;"></div>
+          <div class="swatch-name">Text Secondary</div>
+          <div class="swatch-hex">#5c5b5b</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#afacac;"></div>
+          <div class="swatch-name">Placeholder</div>
+          <div class="swatch-hex">#afacac</div>
+        </div>
+      </div>
+
+      <div class="swatch-group-label">Cores Semânticas</div>
+      <div class="swatch-group">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#b02500;"></div>
+          <div class="swatch-name">Danger</div>
+          <div class="swatch-hex">#b02500</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#16a34a;"></div>
+          <div class="swatch-name">Success</div>
+          <div class="swatch-hex">#16a34a</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#ffd33a;"></div>
+          <div class="swatch-name">Accent Gold</div>
+          <div class="swatch-hex">#ffd33a</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:rgba(255,211,58,0.3); border:0.5px solid rgba(255,211,58,0.6);"></div>
+          <div class="swatch-name">Gold Tint</div>
+          <div class="swatch-hex">30% opacity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 TYPOGRAPHY -->
+  <div class="ds-section">
+    <div class="ds-label">02 — Tipografia</div>
+    <div class="ds-card">
+      <div class="type-row">
+        <div class="type-sample">
+          <div class="type-meta">
+            <div class="type-token">display / h1</div>
+            <div class="type-spec">Manrope ExtraBold · 42px<br>tracking -3px · splash screen</div>
+          </div>
+          <div style="font-family:'Manrope',sans-serif; font-size:32px; font-weight:800; color:#2f2e2e; letter-spacing:-2px; line-height:1;">Organize &amp; Compre</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta">
+            <div class="type-token">heading / h2</div>
+            <div class="type-spec">Nunito Bold · 30px<br>tracking -0.75px · telas de auth</div>
+          </div>
+          <div style="font-family:'Nunito',sans-serif; font-size:26px; font-weight:700; color:#2f2e2e; letter-spacing:-0.6px;">Bem-vindo</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta">
+            <div class="type-token">numeric / display</div>
+            <div class="type-spec">Plus Jakarta Sans ExtraBold · 48px<br>tracking -2.4px · valores monetários</div>
+          </div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:30px; font-weight:800; color:#2f2e2e; letter-spacing:-1.8px; line-height:1;"><span style="font-family:'Nunito',sans-serif; font-size:18px; font-weight:600; color:#fd8b00;">R$</span> 2.450,80</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta">
+            <div class="type-token">subheading / h3</div>
+            <div class="type-spec">Nunito SemiBold · 24px<br>seções e cards</div>
+          </div>
+          <div style="font-family:'Nunito',sans-serif; font-size:20px; font-weight:600; color:#2f2e2e;">Histórico de Gastos</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta">
+            <div class="type-token">section / h4</div>
+            <div class="type-spec">Nunito SemiBold · 17–18px<br>listas recentes, seções</div>
+          </div>
+          <div style="font-family:'Nunito',sans-serif; font-size:16px; font-weight:600; color:#2f2e2e;">Listas Recentes</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta">
+            <div class="type-token">body / default</div>
+            <div class="type-spec">Inter Medium · 16px<br>line-height 1.5 · parágrafos</div>
+          </div>
+          <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:400; color:#5c5b5b; line-height:1.5;">Sua lista de compras inteligente começa aqui.</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta">
+            <div class="type-token">body / small</div>
+            <div class="type-spec">Inter Regular · 14px<br>metadados e descrições</div>
+          </div>
+          <div style="font-family:'Inter',sans-serif; font-size:13px; color:#5c5b5b;">Total em Janeiro · em relação a Dezembro</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta">
+            <div class="type-token">label / overline</div>
+            <div class="type-spec">Inter SemiBold · 12px · tracking 1.2px<br>UPPERCASE · labels de form</div>
+          </div>
+          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; color:#5c5b5b; letter-spacing:1.5px; text-transform:uppercase;">Nome · E-mail · Telefone</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta">
+            <div class="type-token">cta / button</div>
+            <div class="type-spec">Nunito Sans Bold · 18–20px<br>todos os botões CTA</div>
+          </div>
+          <div style="font-family:'Nunito Sans',sans-serif; font-size:17px; font-weight:700; color:#fd8b00;">Começar a Comprar →</div>
+        </div>
+        <div class="type-sample" style="border:none;">
+          <div class="type-meta">
+            <div class="type-token">link / inline</div>
+            <div class="type-spec">Inter Bold · 16px · color primary<br>links de navegação e ações</div>
+          </div>
+          <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:700; color:#fd8b00;">Cadastra-se · Ver todas →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 BUTTONS -->
+  <div class="ds-section">
+    <div class="ds-label">03 — Botões</div>
+    <div class="ds-card">
+      <div class="ds-row" style="gap:24px; align-items:flex-start; flex-wrap:wrap;">
+        <div class="btn-wrap">
+          <div class="btn-primary">Começar a Comprar →</div>
+          <div class="btn-label">Primary CTA · Pill</div>
+        </div>
+        <div class="btn-wrap">
+          <div class="btn-secondary">Ver minhas listas</div>
+          <div class="btn-label">Secondary · Outline</div>
+        </div>
+        <div class="btn-wrap">
+          <div class="btn-rounded">Criar Nova Lista</div>
+          <div class="btn-label">Primary · Rounded-lg</div>
+        </div>
+        <div class="btn-wrap">
+          <div class="btn-ghost">Ver todas →</div>
+          <div class="btn-label">Ghost / Link</div>
+        </div>
+        <div class="btn-wrap">
+          <div class="btn-social">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Google
+          </div>
+          <div class="btn-label">Social · Card</div>
+        </div>
+        <div class="btn-wrap">
+          <div class="btn-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#fd8b00" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="btn-label">Icon · Round</div>
+        </div>
+      </div>
+      <div style="margin-top:20px; padding-top:16px; border-top:0.5px solid var(--color-border);">
+        <div style="font-size:11px; color:var(--color-text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Estados</div>
+        <div class="ds-row" style="gap:8px;">
+          <span class="tag tag-primary">Normal</span>
+          <span style="display:inline-flex; align-items:center; padding:4px 12px; border-radius:9999px; font-size:11px; font-weight:600; background:#c46900; color:white;">Hover / Pressed</span>
+          <span style="display:inline-flex; align-items:center; padding:4px 12px; border-radius:9999px; font-size:11px; font-weight:600; background:rgba(253,139,0,0.06); color:#c46900; border:1px dashed rgba(253,139,0,0.4);">Disabled</span>
+          <span class="tag tag-success">Success</span>
+          <span class="tag tag-danger">Danger / Delete</span>
+        </div>
+      </div>
+      <div class="note">
+        Primary: background #fd8b00 · color #fff0e7 · box-shadow 0 8px 24px rgba(140,74,0,0.20) · font Nunito Sans Bold<br>
+        Secondary: transparent bg · border 1.5px solid #fd8b00 · color #fd8b00<br>
+        Pill CTA: border-radius 9999px · min-height 56px · padding 14px 28px
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 INPUTS -->
+  <div class="ds-section">
+    <div class="ds-label">04 — Campos de Entrada</div>
+    <div class="ds-card">
+      <div class="ds-row" style="gap:16px; margin-bottom:16px;">
+        <div class="input-wrap">
+          <span class="input-label-txt">Nome</span>
+          <input class="input-field" type="text" placeholder="Seu nome aqui..." readonly>
+        </div>
+        <div class="input-wrap">
+          <span class="input-label-txt">E-mail</span>
+          <input class="input-field" type="text" placeholder="seu@email.com" readonly>
+        </div>
+        <div class="input-wrap">
+          <span class="input-label-txt">Telefone</span>
+          <input class="input-field" type="text" placeholder="(11) 99999-9999" readonly>
+        </div>
+      </div>
+      <div class="ds-row" style="gap:8px; align-items:flex-end;">
+        <div class="input-wrap" style="flex:2; min-width:160px;">
+          <span class="input-label-txt">Item</span>
+          <input class="input-field-sm" type="text" placeholder="Creme dental" readonly>
+        </div>
+        <div class="input-wrap" style="min-width:110px;">
+          <span class="input-label-txt">Preço</span>
+          <input class="input-field-sm" type="text" placeholder="R$ 12,35" readonly>
+        </div>
+        <div>
+          <span class="input-label-txt" style="visibility:hidden;">Qtd</span>
+          <div class="input-plus">+</div>
+        </div>
+      </div>
+      <div class="note" style="margin-top:14px;">
+        Formulário: border-radius 12px · padding 16px 20px · border 0.5px · placeholder #afacac<br>
+        Inline lista: border-radius 8px · padding 11px 14px · botão "+" 48×42px<br>
+        Foco: border-color #fd8b00 · outline none · box-shadow 0 0 0 3px rgba(253,139,0,0.15)
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 LIST COMPONENT -->
+  <div class="ds-section">
+    <div class="ds-label">05 — Componente de Lista</div>
+    <div class="ds-card">
+      <div class="section-row">
+        <div class="section-heading">Meu Carrinho</div>
+        <div class="section-link">Ver todas</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:14px;">
+        <div class="list-item">
+          <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span class="item-name">Arroz</span>
+          <span class="item-qty">2 itens</span>
+          <span class="item-price">R$ 21,00</span>
+          <div class="item-x">✕</div>
+        </div>
+        <div class="list-item">
+          <div class="check-icon unchecked"></div>
+          <span class="item-name done">Feijão</span>
+          <span class="item-qty">3 itens</span>
+          <span class="item-price" style="color:var(--color-text-muted);">R$ 38,30</span>
+          <div class="item-x">✕</div>
+        </div>
+        <div class="list-item">
+          <div class="check-icon"><svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span class="item-name">Sabão em pó</span>
+          <span class="item-qty">1 item</span>
+          <span class="item-price">R$ 33,60</span>
+          <div class="item-x">✕</div>
+        </div>
+      </div>
+      <div class="stat-bar">
+        <div class="stat-cell">
+          <div class="stat-cell-label">Pendente</div>
+          <div class="stat-cell-value">R$ 37,05</div>
+          <div class="stat-cell-sub">3 itens</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-label">No Carrinho</div>
+          <div class="stat-cell-value">R$ 416,23</div>
+          <div class="stat-cell-sub">12 itens</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-label">Total</div>
+          <div class="stat-cell-value" style="color:var(--color-primary);">R$ 453,28</div>
+          <div class="stat-cell-sub">15 itens</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 DASHBOARD CARDS -->
+  <div class="ds-section">
+    <div class="ds-label">06 — Cards de Dashboard</div>
+    <div class="ds-row" style="gap:12px;">
+      <div class="total-card" style="flex:1; min-width:240px;">
+        <div class="blur-orb"></div>
+        <div class="total-label">Total em Janeiro</div>
+        <div style="line-height:1; margin-bottom:4px;">
+          <span class="total-curr">R$ </span><span class="total-value">2.450,80</span>
+        </div>
+        <div class="total-trend">
+          <span class="trend-badge">
+            <svg width="10" height="7" viewBox="0 0 12 8" fill="none"><path d="M2 6l4-5 4 5" stroke="#b02500" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            12%
+          </span>
+          <span class="trend-txt">em relação a Dezembro</span>
+        </div>
+      </div>
+      <div class="ds-card" style="flex:1; min-width:200px;">
+        <div class="section-row" style="margin-bottom:12px;">
+          <div class="section-heading" style="font-size:14px;">Listas Recentes</div>
+          <div class="section-link" style="font-size:11px;">Ver todas</div>
+        </div>
+        <div class="history-item">
+          <div class="hist-icon-wrap">
+            <svg width="20" height="18" viewBox="0 0 22 20" fill="none"><path d="M1 1h3l2 9h11l2-6H5" stroke="#fd8b00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="17" r="2" stroke="#fd8b00" stroke-width="1.5"/><circle cx="17" cy="17" r="2" stroke="#fd8b00" stroke-width="1.5"/></svg>
+          </div>
+          <div class="hist-info">
+            <div class="hist-name">Compras de Janeiro</div>
+            <div class="hist-date">15 jan · 12 itens</div>
+          </div>
+          <div class="hist-price">R$ 416,23</div>
+        </div>
+        <div class="history-item">
+          <div class="hist-icon-wrap">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="16" height="16" rx="3" stroke="#fd8b00" stroke-width="1.5"/><path d="M5 9h8M5 6h8M5 12h5" stroke="#fd8b00" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div class="hist-info">
+            <div class="hist-name">Feira Semanal</div>
+            <div class="hist-date">8 jan · 8 itens</div>
+          </div>
+          <div class="hist-price">R$ 189,50</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 MONTH SELECTOR -->
+  <div class="ds-section">
+    <div class="ds-label">07 — Seletor de Meses</div>
+    <div class="ds-card">
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <div class="month-pill active">Janeiro</div>
+        <div class="month-pill inactive">Fevereiro</div>
+        <div class="month-pill inactive">Março</div>
+        <div class="month-pill inactive">Abril</div>
+        <div class="month-pill inactive">Maio</div>
+      </div>
+      <div class="note">Scroll horizontal · border-radius 9999px · padding 10px 20px · ativo: bg #fd8b00 · inativo: bg surface + border</div>
+    </div>
+  </div>
+
+  <!-- 08 TAGS -->
+  <div class="ds-section">
+    <div class="ds-label">08 — Tags &amp; Badges</div>
+    <div class="ds-card">
+      <div class="ds-row" style="gap:8px; flex-wrap:wrap;">
+        <span class="tag tag-primary">Janeiro</span>
+        <span class="tag tag-success">Pago</span>
+        <span class="tag tag-danger">Pendente</span>
+        <span class="tag tag-neutral">12 itens</span>
+        <span style="display:inline-flex; align-items:center; padding:4px 12px; border-radius:9999px; font-size:11px; font-weight:600; background:rgba(176,37,0,0.10); color:#b02500;">-12% vs Dez</span>
+        <span style="display:inline-flex; align-items:center; padding:4px 12px; border-radius:9999px; font-size:11px; font-weight:600; background:rgba(22,163,74,0.10); color:#16a34a;">+8% vs Nov</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 DIVIDER -->
+  <div class="ds-section">
+    <div class="ds-label">09 — Divisor / Divider</div>
+    <div class="ds-card">
+      <div class="divider-row">
+        <div class="divider-line"></div>
+        <div class="divider-txt">Ou conecte-se com</div>
+        <div class="divider-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 NAVIGATION -->
+  <div class="ds-section">
+    <div class="ds-label">10 — Navegação</div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div>
+        <div style="font-size:11px; color:var(--color-text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Top App Bar</div>
+        <div class="topbar">
+          <div class="topbar-back"></div>
+          <div class="topbar-title">Histórico de Gastos</div>
+          <div class="topbar-icon"></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px; color:var(--color-text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Bottom Nav Bar — 4 itens</div>
+        <div class="navbar">
+          <div class="nav-item">
+            <div class="nav-icon active"></div>
+            <div class="nav-lbl active">Início</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-icon"></div>
+            <div class="nav-lbl">Histórico</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-icon"></div>
+            <div class="nav-lbl">Minha Lista</div>
+          </div>
+          <div class="nav-item">
+            <div class="nav-icon"></div>
+            <div class="nav-lbl">Pré-lista</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 ICONS -->
+  <div class="ds-section">
+    <div class="ds-label">11 — Ícones</div>
+    <div class="ds-card">
+      <div class="icon-grid">
+        <div class="icon-cell">
+          <div class="icon-box"><svg width="20" height="18" viewBox="0 0 22 20" fill="none"><path d="M1 1h3l2 9h11l2-6H5" stroke="#fd8b00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="17" r="2" stroke="#fd8b00" stroke-width="1.5"/><circle cx="17" cy="17" r="2" stroke="#fd8b00" stroke-width="1.5"/></svg></div>
+          <div class="icon-name">carrinho</div>
+        </div>
+        <div class="icon-cell">
+          <div class="icon-box"><svg width="16" height="18" viewBox="0 0 16 20" fill="none"><path d="M8 1C4.13 1 1 4.13 1 8c0 5 7 11 7 11s7-6 7-11c0-3.87-3.13-7-7-7z" stroke="#5c5b5b" stroke-width="1.5" fill="none"/><circle cx="8" cy="8" r="2.5" stroke="#5c5b5b" stroke-width="1.3"/></svg></div>
+          <div class="icon-name">início</div>
+        </div>
+        <div class="icon-cell">
+          <div class="icon-box"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#5c5b5b" stroke-width="1.5"/><path d="M9 5v5l3 2" stroke="#5c5b5b" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="icon-name">histórico</div>
+        </div>
+        <div class="icon-cell">
+          <div class="icon-box"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v14M1 8h14" stroke="#5c5b5b" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="icon-name">adicionar</div>
+        </div>
+        <div class="icon-cell">
+          <div class="icon-box"><svg width="16" height="13" viewBox="0 0 16 13" fill="none"><path d="M1 1h14M1 6.5h10M1 12h7" stroke="#5c5b5b" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="icon-name">pré-lista</div>
+        </div>
+        <div class="icon-cell">
+          <div class="icon-box"><svg width="18" height="20" viewBox="0 0 18 20" fill="none"><rect x="1" y="3" width="16" height="16" rx="2" stroke="#5c5b5b" stroke-width="1.5"/><path d="M5 3V1M13 3V1M1 8h16" stroke="#5c5b5b" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="icon-name">calendário</div>
+        </div>
+        <div class="icon-cell">
+          <div class="icon-box"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 10l6 6L18 4" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="icon-name">check-fill</div>
+        </div>
+        <div class="icon-cell">
+          <div class="icon-box"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="#b02500" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="icon-name">fechar / X</div>
+        </div>
+        <div class="icon-cell">
+          <div class="icon-box"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 3l5 5-5 5" stroke="#5c5b5b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="icon-name">seta →</div>
+        </div>
+        <div class="icon-cell">
+          <div class="icon-box"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="1.5" fill="#5c5b5b"/><circle cx="8" cy="3" r="1.5" fill="#5c5b5b"/><circle cx="8" cy="13" r="1.5" fill="#5c5b5b"/></svg></div>
+          <div class="icon-name">menu vert.</div>
+        </div>
+        <div class="icon-cell">
+          <div class="icon-box"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.09 6.26H18l-4.95 3.6 1.9 5.8L10 14.1l-4.95 3.56 1.9-5.8L2 8.26h5.91L10 2z" stroke="#fd8b00" stroke-width="1.3" fill="none"/></svg></div>
+          <div class="icon-name">salvar fav</div>
+        </div>
+        <div class="icon-cell">
+          <div class="icon-box"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"><path d="M14 6.5a6 6 0 10-12 0c0 3.5-2 4.5-2 4.5h16s-2-1-2-4.5z" stroke="#5c5b5b" stroke-width="1.4" fill="none"/><path d="M10 16a2 2 0 01-4 0" stroke="#5c5b5b" stroke-width="1.4"/></svg></div>
+          <div class="icon-name">notific.</div>
+        </div>
+      </div>
+      <div class="note">Tamanhos: 16px (inline/nav) · 18px (list items) · 20–22px (ações) · 24px (social) · Stroke: 1.2–1.5px</div>
+    </div>
+  </div>
+
+  <!-- 12 SPACING & RADIUS -->
+  <div class="ds-section">
+    <div class="ds-label">12 — Espaçamento &amp; Border Radius</div>
+    <div class="ds-card">
+      <div style="font-size:11px; color:var(--color-text-muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Grid de Espaçamento</div>
+      <div class="spacing-row">
+        <div class="sp-item"><div class="sp-block" style="width:6px; height:14px;"></div><div class="sp-val">4px</div></div>
+        <div class="sp-item"><div class="sp-block" style="width:10px; height:20px;"></div><div class="sp-val">8px</div></div>
+        <div class="sp-item"><div class="sp-block" style="width:14px; height:26px;"></div><div class="sp-val">12px</div></div>
+        <div class="sp-item"><div class="sp-block" style="width:18px; height:32px;"></div><div class="sp-val">16px</div></div>
+        <div class="sp-item"><div class="sp-block" style="width:22px; height:38px;"></div><div class="sp-val">20px</div></div>
+        <div class="sp-item"><div class="sp-block" style="width:28px; height:46px;"></div><div class="sp-val">24px</div></div>
+        <div class="sp-item"><div class="sp-block" style="width:36px; height:56px;"></div><div class="sp-val">32px</div></div>
+        <div class="sp-item"><div class="sp-block" style="width:44px; height:64px;"></div><div class="sp-val">40px</div></div>
+      </div>
+      <div class="note" style="margin-bottom:20px;">Margin lateral: 24px · Content grid: 342px em tela 390px · Padding hero: 32px</div>
+
+      <div style="font-size:11px; color:var(--color-text-muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Border Radius</div>
+      <div class="radius-row">
+        <div><div class="radius-sample" style="width:60px; height:44px; border-radius:8px;"></div><div class="radius-lbl">8px · sm</div></div>
+        <div><div class="radius-sample" style="width:60px; height:44px; border-radius:12px;"></div><div class="radius-lbl">12px · md</div></div>
+        <div><div class="radius-sample" style="width:60px; height:44px; border-radius:16px;"></div><div class="radius-lbl">16px · lg</div></div>
+        <div><div class="radius-sample" style="width:80px; height:36px; border-radius:9999px;"></div><div class="radius-lbl">9999px · pill</div></div>
+        <div><div class="radius-sample" style="width:60px; height:44px; border-radius:32px;"></div><div class="radius-lbl">32px · logo</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 SPLASH -->
+  <div class="ds-section">
+    <div class="ds-label">13 — Tela de Boas-vindas (Splash)</div>
+    <div class="splash-card" style="max-width:340px;">
+      <div class="splash-orb-1"></div>
+      <div class="splash-orb-2"></div>
+      <div style="position:relative; z-index:1;">
+        <div class="splash-logo-wrap">
+          <svg width="32" height="32" viewBox="0 0 28 28" fill="none">
+            <path d="M3 6h4l2.5 10h12l2.5-7.5H8" stroke="#fd8b00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="11" cy="20" r="2" stroke="#fd8b00" stroke-width="1.5"/>
+            <circle cx="19" cy="20" r="2" stroke="#fd8b00" stroke-width="1.5"/>
+            <path d="M15 9v5M12.5 11.5l2.5 2.5 2.5-2.5" stroke="#fd8b00" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="splash-title">Organize &amp; Compre</div>
+        <div class="splash-sub">Ao app de lista de compras mais prático do mundo!</div>
+        <div class="splash-btn">
+          Começar
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="#fd8b00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14 FONTS -->
+  <div class="ds-section" style="margin-bottom:0;">
+    <div class="ds-label">14 — Fontes &amp; Dependências</div>
+    <div class="ds-card">
+      <div class="font-row">
+        <div class="font-item">
+          <div class="font-name">Manrope</div>
+          <div class="font-detail">ExtraBold (800)<br>Display · Nome do app · H1</div>
+          <div class="font-preview" style="font-family:'Manrope',sans-serif; font-weight:800;">Aa</div>
+        </div>
+        <div class="font-item">
+          <div class="font-name">Nunito</div>
+          <div class="font-detail">Bold (700) · SemiBold (600)<br>Headings H2–H3 · Saudações</div>
+          <div class="font-preview" style="font-family:'Nunito',sans-serif; font-weight:700;">Aa</div>
+        </div>
+        <div class="font-item">
+          <div class="font-name">Nunito Sans</div>
+          <div class="font-detail">Bold (700)<br>CTAs · Botões principais</div>
+          <div class="font-preview" style="font-family:'Nunito Sans',sans-serif; font-weight:700;">Aa</div>
+        </div>
+        <div class="font-item">
+          <div class="font-name">Plus Jakarta Sans</div>
+          <div class="font-detail">ExtraBold (800)<br>Valores monetários grandes</div>
+          <div class="font-preview" style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:800;">Aa</div>
+        </div>
+        <div class="font-item">
+          <div class="font-name">Inter</div>
+          <div class="font-detail">Regular · Medium · SemiBold · Bold<br>Body · Labels · Overlines · Links</div>
+          <div class="font-preview" style="font-family:'Inter',sans-serif; font-weight:400;">Aa</div>
+        </div>
+      </div>
+      <div class="note" style="margin-top:16px;">
+        Google Fonts CDN: fonts.googleapis.com/css2?family=Manrope:wght@800&family=Nunito:wght@600;700&family=Nunito+Sans:wght@700&family=Plus+Jakarta+Sans:wght@800&family=Inter:wght@400;500;600;700
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="/src/pages/cadastro/style-cadastro.css">
+    <title>Organize&Compre</title>
+</head>
+<body>
+    <header class="header-conta">
+        <h1 class="title">Criar Conta</h1>
+    </header>
+    <main class="main-conta">
+        <form class="section-text">
+            <div class="nome-sobrenome">
+                <div class="nome">
+                    <label for="text-nome" class="label">NOME</label>
+                    <input type="text" id="text-nome" class="input-nome" placeholder="Ex: João" required>
+                </div>
+                <div class="sobrenome">
+                    <label for="text-sobrenome" class="label">SOBRENOME</label>
+                    <input type="text" id="text-sobrenome" class="input-sobrenome" placeholder="Ex: Silva" required>
+                </div>
+            </div>
+
+            <label  for="text-email" class="label">EMAIL</label>
+            <input type="email" id = "text-email" class="input-email" placeholder="seu@email.com" required>
+
+            <label  for="password" class="label">SENHA</label>
+            <input id="password" type="password" class="input-password" placeholder="Senha (no mínimo 6 caracteres)" required>
+            <label  for="confirm-password" class="label">CONFIRMAR SENHA</label>
+            <input id="confirm-password" type="password" class="input-password" placeholder="Confirme sua senha" required>
+            <span class="mostrar-senha" id="password-mostrar">MOSTRAR SENHA</span>
+            
+            <button type="submit" id="btn-cadastro" class="btn-cadastro">Cadastrar</button>
+        </form>
+        <section class="signup-section">
+            <div class="conect">
+                <span class="line"></span>
+                <p class="conect-text">ou continue com</p>
+                <span class="line"></span>
+            </div>
+            <div class="social-conect">
+                <div class="conta">
+                    <img src="/src/assets/icons/google-logo.svg" alt="Google Logo" class="logo">
+                    <a href="https://mail.google.com" class="signup-link">Google</a>
+                </div>
+                <div class="conta">
+                    <img src="/src/assets/icons/facebook-logo.svg" alt="Facebook Logo" class="logo">
+                    <a href="https://www.facebook.com/?locale=pt_BR" class="signup-link">Facebook</a>
+                </div>
+            </div>
+            <div class="cadastre-section">
+                <p class="text-cadastre">Ja tem uma conta?</p>
+                <a href="http://127.0.0.1:5500/src/pages/login/login.html?" class="cadastre">Entrar</a>
+            </div>
+        </section>
+    </main>
+    <footer class="footer-conta">
+        <p class="text-footer">© 2026 Organize&Compre. Todos os direitos reservados.</p>
+    </footer>
+    
+    
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <script src="/src/pages/cadastro/cadastro.js"></script>
+</body>
+</html>

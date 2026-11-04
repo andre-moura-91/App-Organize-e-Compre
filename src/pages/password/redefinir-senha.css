@@ -1,0 +1,113 @@
+@import url('../../styles/base/global.css');
+
+/* 1. ESTILOS ESPECÍFICOS PARA A PÁGINA DE LOGIN */
+body {
+  display: flex;
+  background-color: var(--cor-bg-clara);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.title-logo {
+  font-family: var(--fonte-logo);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--cor-principal-laranja);
+  margin-bottom: 15px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.section-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 30PX;
+}
+
+.title {
+  font-family: var(--fonte-principal-titulo);
+  font-size: 30px;
+  color: var(--cor-text2-preto);
+  padding: 0 5px;
+}
+
+.text-subtitle {
+  font-family: var(--fonte-texto);
+  font-size: 14px;
+  color: var(--cor-subtitulo-cinza);
+  padding: 0 5px;
+}
+
+.conteiner-input {
+  background-color: var(--cor-text1-branco);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 12px;
+  padding: 0px 15px;
+  gap: 5px;
+}
+
+.input-email {
+  background-color: var(--cor-text1-branco);
+  width: 100%;
+  padding: 16px 15px;
+  color: var(--cor-subtitulo-cinza);
+  font-family: var(--fonte-texto);
+  font-weight: 300;
+  font-size: 14px;
+  border-radius: 12px;
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+.label {
+  font-family: var(--fonte-texto);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cor-subtitulo-cinza);
+  margin-top: 15px;
+  letter-spacing: 1px;
+  padding: 0 5px;
+}
+
+::placeholder {
+  font-family: var(--fonte-texto);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--cor-icons-cinza-escuro);
+}
+
+.btn-continuar {
+  background-color: var(--cor-principal-laranja);
+  color: var(--cor-text1-branco);
+  width: 100%;
+  padding: 10px 15px;
+  text-align: center;
+  font-family: var(--fonte-principal-titulo);
+  font-weight: 500;
+  border-radius: 9999px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  margin-top: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-continuar:hover {
+  background-color: #f89729bb;
+  transform: scale(1.01);
+  transition: all 0.3s ease;
+}

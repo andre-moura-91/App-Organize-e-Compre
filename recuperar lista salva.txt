@@ -1,0 +1,19 @@
+// Dados originais (objeto/array)
+let carrinhosItens = [
+  { id: 1, nome: "Arroz", quantidade: 2, preco: 5.50 },
+  { id: 2, nome: "Feijão", quantidade: 1, preco: 8.00 }
+];
+
+// ✅ SALVAR no localStorage
+localStorage.setItem('minhaLista', JSON.stringify(carrinhosItens));
+
+// Para RECUPERAR depois:
+let itensRecuperados = JSON.parse(localStorage.getItem('minhaLista'));
+console.log(itensRecuperados); // Array original restaurado
+
+
+// Salvar
+localStorage.setItem('minhaLista', JSON.stringify(carrinhosItens));
+
+// Carregar (ao abrir a página)
+let carrinhosItens = JSON.parse(localStorage.getItem('minhaLista')) || [];

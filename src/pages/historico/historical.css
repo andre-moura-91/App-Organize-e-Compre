@@ -1,0 +1,211 @@
+@import url('/src/styles/base/global.css');
+@import url('/src/styles/components/bottomNavBar.css');
+
+body {
+    background-color: var(--cor-principal-laranja);
+    justify-content: center;
+    margin: 0 24px;
+}
+
+.bg-clean {
+    position: fixed;
+    top: 105px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 15px 0 0;
+    background-color: var(--cor-bg-clara);
+    z-index: -1;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+
+.title-geral {
+    display: flex;
+    flex-direction: column;
+}
+
+.visao {
+    font-family: var(--font-texto);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cor-text1-branco);
+    letter-spacing: 2.5px;
+}
+
+.title {
+    font-family: var(--fonte-principal-titulo);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--cor-text2-preto);
+    margin-bottom: 20px;
+}
+
+.calendario {
+    fill: var(--cor-text1-branco);
+}
+
+.meses {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.mes {
+    background-color: var(--cor-input-cinza);
+    padding: 10px 25px;
+    border-radius: 9999px;
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cor-icons-cinza-escuro);
+    cursor: pointer;
+}
+
+.mes:active {
+    background-color: #ffb3573a;
+    padding: 10px 25px;
+    border-radius: 9999px;
+    border: 1px solid #ff9b2157;
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cor-icons-cinza-escuro);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.container-total-mes {
+    display: flex;
+    background-color: var(--cor-text1-branco);
+    border-radius: 12px;
+    box-shadow: 0px 1px 10px 0px rgba(105, 105, 105, 0.1);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 35px;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.total-mes p {
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cor-subtitulo-cinza);
+}
+
+.recentes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.title-list {
+    font-family: var(--fonte-principal-titulo);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--cor-text2-preto);
+}
+
+.ver-todos {
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cor-principal-laranja);
+    cursor: pointer;
+}
+
+.container_lista {
+    display: flex;
+    background-color: var(--cor-text1-branco);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0px 1px 10px 0px rgba(105, 105, 105, 0.1);
+    gap: 20px;
+}
+
+.cestinha {
+    background-color: var(--cor-input-cinza);
+    width: 46px;
+    height: 46px;
+    padding: 12px;
+    border-radius: 99999px;
+    fill: var(--cor-principal-laranja);
+}
+
+.semanal {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.compras {
+    font-family: var(--fonte-principal-titulo);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--cor-text2-preto);
+}
+
+.data {
+    font-family: var(--fonte-texto);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--cor-text2-preto);
+}
+
+.valor-semanal {
+    font-family: var(--fonte-texto);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--cor-text2-preto);
+}
+
+.container_new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: var(--cor-text1-branco);
+    background-color: var(--cor-principal-laranja);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.title-new {
+    font-family: var(--fonte-principal-titulo);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.container_new p {
+    font-family: var(--fonte-texto);
+    font-size: 14px;
+    font-weight: 200;
+    color: var(--cor-text1-branco);
+}
+
+.btn-new {
+    background-color: var(--cor-text1-branco);
+    color: var(--cor-principal-laranja);
+    font-family: var(--fonte-texto);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 30px;
+    border-radius: 9999px;
+    margin-top: 15px;
+    cursor: pointer;
+}
