@@ -1,119 +1,68 @@
 # Organize & Compre
 
-App para gerenciar sua lista de compras com foco em praticidade, organização e velocidade no dia a dia. Ele permite adicionar itens, marcar o que já foi comprado (ou pendente), visualizar totais e manter o histórico de listas.
-
-> **Nome do app:** Organize & Compre
-
----
-
-## Funcionalidades
-
-- **Adicionar itens** à lista (nome e valor)
-- **Quantidade por item** (controle com botões `+` e `-`)
-- **Marcar itens como checados** (no carrinho) ou **pendentes**
-- **Filtros/abas**:
-  - Todos
-  - No carrinho
-  - Pendentes
-- **Totais e indicadores**:
-  - Total geral
-  - Valor pendente
-  - Quantidade de itens por estado
-- **Salvar lista no navegador** via `localStorage`
-- **Histórico de listas** (página dedicada)
-
----
+Aplicação web para organizar listas de compras. O projeto oferece telas de cadastro e login com sessão no servidor, além das páginas de listas e perfil.
 
 ## Tecnologias
 
-- **HTML/CSS/JavaScript (front-end)**
-- **Vite** (build/servidor de desenvolvimento)
-- Bibliotecas externas usadas no layout:
-  - Font Awesome
-  - Remix Icon
-  - jQuery + jQuery Mask (para máscara de valor)
+- HTML, CSS e JavaScript
+- Vite para desenvolvimento e build das páginas
+- Node.js, Express e PostgreSQL para autenticação
+- Senhas protegidas com `scrypt`; sessões armazenadas no PostgreSQL em cookies `HttpOnly`
 
----
+## Requisitos
 
-## Como rodar o projeto
+- Node.js 20 ou superior
+- Docker Desktop com Docker Compose, ou uma instância PostgreSQL acessível
 
-### Pré-requisitos
+## Desenvolvimento local no Windows
 
-- Node.js instalado
-- npm (normalmente vem junto com o Node.js)
+1. Instale as dependências:
 
-### Instalação
+   ```powershell
+   npm install
+   ```
 
-```bash
-npm install
-```
+2. Crie a configuração local e substitua `SESSION_SECRET` pelo valor aleatório gerado no segundo comando. Não envie o arquivo `.env` ao Git:
 
-### Desenvolvimento
+   ```powershell
+   Copy-Item .env.example .env
+   node --input-type=module -e "import { randomBytes } from 'node:crypto'; console.log(randomBytes(48).toString('base64url'))"
+   ```
 
-```bash
-npm run dev
-```
+3. Inicie o PostgreSQL local:
 
-O app será servido pelo Vite (default `http://localhost:5173`).
+   ```powershell
+   docker compose up -d db
+   ```
 
-### Build (produção)
+   O usuário, a senha e o banco de desenvolvimento são definidos no `.env`. Se alterar a senha, atualize também `DATABASE_URL`. Não reutilize essas credenciais em produção.
 
-```bash
+4. Inicie o backend e o Vite:
+
+   ```powershell
+   npm run dev
+   ```
+
+   Abra `http://127.0.0.1:5173`. O backend cria a tabela de usuários ao iniciar; o armazenamento de sessões também é criado automaticamente.
+
+## Build e produção
+
+```powershell
+npm test
+npm run lint
 npm run build
+npm start
 ```
 
----
+`npm start` serve as páginas compiladas em `dist` junto com a API. Em produção, configure `NODE_ENV=production`, `DATABASE_URL`, `SESSION_SECRET`, `APP_ORIGIN` com a origem HTTPS pública e `HOST=0.0.0.0` conforme a plataforma. Use HTTPS atrás de um proxy confiável para que os cookies seguros sejam enviados corretamente. Não exponha o PostgreSQL à internet.
 
-## Estrutura do projeto (visão geral)
+## Autenticação e limites atuais
 
-- `src/` — código do front-end
-  - `src/pages/` — páginas do app (bem-vindo, login, lista, histórico etc.)
-    - `src/pages/lista/` — página do carrinho/lista de compras
-    - `src/pages/historico/` — página de histórico
-  - `src/navigation/` — lógica de navegação
-  - `src/styles/` — estilos globais e componentes
-  - `src/script/` — scripts gerais (ex.: splash screen)
+- Cadastro exige senha de pelo menos 12 caracteres; senhas não são gravadas no navegador. O e-mail ainda não é confirmado, então configure verificação de endereço antes de usar em produção.
+- Login e cadastro usam consultas parametrizadas, proteção CSRF, limitação de tentativas e sessões `HttpOnly`, `SameSite=Lax`.
+- A recuperação de senha por e-mail e o login social estão desativados até que um serviço de e-mail/provedor OAuth seja configurado. A interface informa essa limitação, sem fingir que enviou um e-mail ou autenticou com terceiros.
+- As listas ainda são armazenadas no navegador e não são sincronizadas nem isoladas por conta. Não use dados sensíveis nelas. A autenticação não substitui HTTPS, configuração segura do servidor, backups e monitoramento.
 
----
+## Testes
 
-## Uso (passo a passo)
-
-1. Abra a página do **Carrinho/Lista**.
-2. Digite:
-   - **Nome do item**
-   - **Valor** (formato com máscara para moeda)
-3. Ajuste a **quantidade** do item (se necessário).
-4. Clique em **Adicionar (+)**.
-5. Marque os itens com checkbox para alternar entre **pendente** e **no carrinho**.
-6. Use as abas para filtrar e acompanhar os **totais**.
-7. Clique em **Salvar** (quando disponível na interface) para persistir no `localStorage`.
-
----
-
-## Observações sobre persistência (localStorage)
-
-A lista é salva no navegador usando `localStorage` com a chave `minhaLista`. Isso significa:
-
-- Funciona bem para uso local e testes
-- Ao limpar dados do navegador, a lista pode ser removida
-
----
-
-## Contribuindo
-
-- Siga o padrão do projeto para IDs e classes no HTML
-- Prefira manter as funções de renderização e cálculo coesas (ex.: `renderizarItensValor`, `atualizarTotal`)
-- Caso altere rotas/links, revise os `href` das páginas (alguns exemplos atuais apontam para URLs fixas de servidor).
-
----
-
-## TODO / Melhorias futuras
-
-Consulte o arquivo `TODO.md` na raiz do projeto para acompanhar correções e melhorias em andamento.
-
----
-
-## Licença
-
-Sem licença definida no projeto até o momento. Se necessário, defina uma licença (MIT, Apache-2.0 etc.).
-
+`npm test` executa testes de hashing e fluxos HTTP de cadastro, login, sessão, CSRF e logout usando armazenamento em memória de teste. Os testes não requerem uma instância PostgreSQL.

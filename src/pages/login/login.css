@@ -129,6 +129,29 @@ input:-webkit-autofill:focus {
   margin-right: 15px;
 }
 
+.password-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--cor-icons-cinza-escuro);
+  cursor: pointer;
+  padding: 8px;
+}
+
+.form-message {
+  min-height: 1.5em;
+  color: #8a2c20;
+  font-family: var(--fonte-texto);
+  font-size: 14px;
+}
+
+.btn-entrar:disabled,
+.btn-cadastro:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
 .btn-esqueci {
   display: flex;
   align-items: center;

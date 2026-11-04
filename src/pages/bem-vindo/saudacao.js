@@ -1,21 +1,22 @@
-// Recuperar dados do usuário do localStorage
-const nomeGuardado = localStorage.getItem('nome');
+const welcome = document.getElementById('bem-vindo');
+const startButton = document.getElementById('start-btn');
 
-// Se não houver usuário logado, redirecionar para login
-if (!nomeGuardado) {
-    window.location.href = '/src/pages/login/login.html';
+async function loadWelcome() {
+    const response = await fetch('/api/auth/me', { credentials: 'same-origin', cache: 'no-store' });
+    if (response.status === 401) {
+        window.location.replace('/src/pages/login/login.html');
+    } else if (!response.ok) {
+        throw new Error('Não foi possível carregar sua conta.');
+    } else {
+        const { user } = await response.json();
+        welcome.append(document.createTextNode(`${user.firstName} ${user.lastName}`));
+    }
 }
 
-const bemVindo = document.getElementById('bem-vindo');
-const nomeUsuario = document.createElement('span');
-nomeUsuario.textContent = nomeGuardado;
-
-bemVindo.appendChild(nomeUsuario);
-
-const btnComecar = document.getElementById('start-btn');
-
-function comecarLista() {
+startButton.addEventListener('click', () => {
     window.location.href = '/src/pages/lista/lista.html';
-}
+});
 
-btnComecar.addEventListener('click', comecarLista);
+loadWelcome().catch((error) => {
+    welcome.textContent = error.message;
+});

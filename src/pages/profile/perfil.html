@@ -21,28 +21,28 @@
             <section class="info-perfil">
                 <img class="avatar" src="/src/assets/imagens/avatar.png" alt="Avatar de André Moura">
                 <div class="user-info">
-                    <h3 class="user-name">Nome Sobrenome</h3>
-                    <p class="user-email">coloque_seu@email.com</p>
+                    <h3 class="user-name">Carregando conta...</h3>
+                    <p class="user-email"></p>
                 </div>
             </section>
 
             <section class="main-content">
                 <h2 class="titulo">Conta</h2>
-                <div class="row-card" onclick="goTo('editar')">
+                <div class="row-card" data-action="editar" role="button" tabindex="0">
                     <span class="icon-circle">
                         <img src="/src/assets/icons/icons perfil/G perfil.svg" alt="Gerenciar perfil">
                     </span>
                     <span class="row-label">Gerenciar perfil</span>
                     <span class="chevron">›</span>
                 </div>
-                <div class="row-card" onclick="showToast('Abrindo senha e segurança...')">
+                <div class="row-card" data-action="seguranca" role="button" tabindex="0">
                     <span class="icon-circle">
                         <img src="/src/assets/icons/icons perfil/segurança.svg" alt="Segurança">
                     </span>
                     <span class="row-label">Senha e segurança</span>
                     <span class="chevron">›</span>
                 </div>
-                <div class="row-card" onclick="showToast('Abrindo configurações...')">
+                <div class="row-card" data-action="configuracoes" role="button" tabindex="0">
                     <span class="icon-circle">
                         <img src="/src/assets/icons/icons perfil/configuraçoes.svg" alt="Configurações">
                     </span>
@@ -51,28 +51,28 @@
                 </div>
         
                 <h2 class="titulo">Preferências</h2>
-                <div class="row-card" onclick="showToast('Alterando tema...')">
+                <div class="row-card" data-action="tema" role="button" tabindex="0">
                     <span class="icon-circle">
                         <img src="/src/assets/icons/icons perfil/tema.svg" alt="Tema">
                     </span>
                     <span class="row-label">Tema</span>
                     <span class="chevron">›</span>
                 </div>
-                <div class="row-card" onclick="showToast('Abrindo notificações...')">
+                <div class="row-card" data-action="notificacoes" role="button" tabindex="0">
                     <span class="icon-circle">
                         <img src="/src/assets/icons/icons perfil/notificacoes.svg" alt="Notificações">
                     </span>
                     <span class="row-label">Notificações</span>
                     <span class="chevron">›</span>
                 </div>
-                <div class="row-card" onclick="showToast('Saindo da conta...')">
+                <div class="row-card" data-action="sair" role="button" tabindex="0">
                     <span class="icon-circle">
                         <img src="/src/assets/icons/icons perfil/sair.svg" alt="Sair">
                     </span>
                     <span class="row-label">Sair</span>
                     <span class="chevron">›</span>
                 </div>
-                <div class="row-card danger" onclick="showToast('Ação irreversível — confirme para deletar')">
+                <div class="row-card danger" data-action="deletar" role="button" tabindex="0">
                     <span class="icon-circle">
                         <img src="/src/assets/icons/icons perfil/deletar conta.svg" alt="Deletar conta">
                     </span>
@@ -81,14 +81,14 @@
                 </div>
         
                 <div class="titulo">Suporte</div>
-                <div class="row-card" onclick="showToast('Abrindo feedback...')">
+                <div class="row-card" data-action="feedback" role="button" tabindex="0">
                     <span class="icon-circle">
                         <img src="/src/assets/icons/icons perfil/feedback.svg" alt="Feedback">
                     </span>
                     <span class="row-label">Feedback</span>
                     <span class="chevron">›</span>
                 </div>
-                <div class="row-card" onclick="showToast('Abrindo ajuda...')">
+                <div class="row-card" data-action="ajuda" role="button" tabindex="0">
                     <span class="icon-circle">
                         <img src="/src/assets/icons/icons perfil/ajuda.svg" alt="Ajuda">
                     </span>
@@ -105,7 +105,7 @@
             <section class="nav">
                 <span class="bg-editar">ORG</span>
                 <div class="editar-top">
-                    <button class="back-btn" onclick="goTo('perfil')">
+                    <button class="back-btn" data-action="voltar" type="button">
                         <img class="seta" src="/src/assets/icons/icons perfil/seta.svg" alt="Seta">
                     </button>
                     <h1 class="title-editar">Editar Perfil</h1>
@@ -114,7 +114,7 @@
             <section class="info-perfil">
                 <div class="avatar-edit-wrap">
                     <img class="avatar" src="/src/assets/imagens/avatar.png" alt="Avatar de André Moura">
-                    <img class="camera-badge" src="/src/assets/icons/camera.svg" alt="Câmera" onclick="showToast('Selecionar nova foto')">
+                    <img class="camera-badge" src="/src/assets/icons/camera.svg" alt="Câmera" data-action="foto" role="button" tabindex="0">
                 </div>
             </section>
 
@@ -154,14 +154,14 @@
                 <div class="field">
                     <label for="senha">Senha</label>
                     <div class="input-wrap">
-                        <input type="password" id="senha" placeholder="••••••••••••" value="senha1234">
-                        <button class="eye-toggle" type="button" onclick="togglePw()">
+                        <input type="password" id="senha" placeholder="••••••••••••" autocomplete="new-password">
+                        <button class="eye-toggle" type="button" data-action="mostrar-senha" aria-label="Mostrar senha" aria-pressed="false">
                             <i id="password-line" class="ri-eye-line"></i>
                             <i id="password-offline" class="ri-eye-off-line"></i>
                         </button>
                     </div>
                 </div>
-                <button class="save-btn" id="save-btn" onclick="saveProfile()">Salvar</button>
+                <button class="save-btn" id="save-btn" data-action="salvar" type="button">Salvar</button>
                 <p class="text-direitos">© 2026 Organize&Compre. Todos os direitos reservados.</p>
             </section>
 
@@ -191,9 +191,8 @@
         </a>
     </nav>
 
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-    <script src="/src/pages/profile/perfil.js"></script>
+    <script src="/src/pages/profile/perfil.js" type="module"></script>
     <script src="/src/navigation/appNavigation.js" type="module"></script>
+    <script src="/src/script/authGuard.js" type="module"></script>
 </body>
 </html>

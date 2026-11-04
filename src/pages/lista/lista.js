@@ -1,3 +1,5 @@
+import { parseBrazilianCurrency } from '../../script/currency.js';
+
 let carrinhosItens = []
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -7,11 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const addButton = document.getElementById('add_button');
 
     if (!itemInput || !valorInput || !addButton) return;
-
-    // Inicializa a máscara do campo valor APÓS o DOM carregar
-    if (typeof $('#valor_input').mask === 'function') {
-        $('#valor_input').mask("#.##0,00", {reverse: true});
-    }
 
     const upgradeButtonState = () => {
         addButton.disabled = itemInput.value.trim().length === 0 || valorInput.value.trim().length === 0;  
@@ -40,12 +37,21 @@ function adicionarItem() {
     const itemInput = document.getElementById('item_input');
     const valorInput = document.getElementById('valor_input');
     const addButton = document.getElementById('add_button');
+    const valor = parseBrazilianCurrency(valorInput.value);
+    if (valor === null) {
+        const mensagem = document.getElementById('mensagemSucesso');
+        if (mensagem) {
+            mensagem.textContent = 'Informe um valor válido, por exemplo: 12,50.';
+            mensagem.style.display = 'block';
+        }
+        return;
+    }
 
     let qtdSelecionada = parseInt(document.getElementById('quantidade-itens')?.textContent) || 1;
 
     let novoItemObj = { 
         nome: itemInput.value.trim(),
-        valor: Number(valorInput.value.replace(',', '.')) || 0,
+        valor,
         quantidade: qtdSelecionada,
         checado: false 
     };
@@ -61,6 +67,7 @@ function adicionarItem() {
 
     let mensagemItem = document.getElementById('mensagemSucesso');
     if (mensagemItem) {
+        mensagemItem.textContent = 'Item adicionado com sucesso!';
         mensagemItem.style.display = 'block';
 
         setTimeout(function() {

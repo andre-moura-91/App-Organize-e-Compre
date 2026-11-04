@@ -1,52 +1,37 @@
+import { authRequest, removeLegacyCredentials } from '../../script/authApi.js';
 
-const nome = document.getElementById('text-nome'); 
-const senha = document.getElementById('text-password');
-const btnEntrar = document.getElementById('btn-entrar');
-const passwordLine = document.getElementById('password-line');
-const passwordOffline = document.getElementById('password-offline');
-const esqueciSenha = document.getElementById('esqueci-senha');
+const form = document.getElementById('login-form');
+const email = document.getElementById('login-email');
+const password = document.getElementById('text-password');
+const passwordToggle = document.getElementById('toggle-password');
+const forgotPassword = document.getElementById('esqueci-senha');
+const submitButton = document.getElementById('btn-entrar');
+const message = document.getElementById('form-message');
 
-passwordOffline.style.display = 'none';
+removeLegacyCredentials();
 
-let textPassword = {
-    'text': (el) => {el.setAttribute('type', 'password')},
-    'password': (el) => {el.setAttribute('type', 'text')},
-}
-
-passwordLine.addEventListener('click', function() {
-    textPassword[senha.type](senha);
-    passwordLine.style.display = 'none';
-    passwordOffline.style.display = 'block';
+passwordToggle.addEventListener('click', () => {
+    const show = password.type === 'password';
+    password.type = show ? 'text' : 'password';
+    passwordToggle.setAttribute('aria-label', show ? 'Ocultar senha' : 'Mostrar senha');
+    passwordToggle.setAttribute('aria-pressed', String(show));
 });
 
-passwordOffline.addEventListener('click', function() {
-    textPassword[senha.type](senha);
-    passwordOffline.style.display = 'none';
-    passwordLine.style.display = 'block';
+forgotPassword.addEventListener('click', () => {
+    message.textContent = 'A recuperação de senha por e-mail ainda não está configurada. Entre em contato com o suporte.';
 });
 
-function entrar(event) {
+form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    message.textContent = '';
+    submitButton.disabled = true;
 
-    const nomeInput = nome.value.trim();
-    const senhaInput = senha.value.trim();
-
-    if (nomeInput === '' || senhaInput === '') {
-        alert('Por favor, preencha todos os campos.');
-        return;
+    try {
+        await authRequest('/login', { email: email.value, password: password.value });
+        window.location.href = '/src/pages/onboarding/onboarding-1.html';
+    } catch (error) {
+        message.textContent = error.message;
+    } finally {
+        submitButton.disabled = false;
     }
-
-    // Guardar dados antes de navegar
-    localStorage.setItem('nome', nomeInput);
-    localStorage.setItem('senha', senhaInput);
-
-    alert('Login realizado com sucesso!');
-    window.location.href = '/src/pages/onboarding/onboarding-1.html';
-}
-
-
-esqueciSenha.addEventListener('click', function() {
-    window.location.href = '/src/pages/password/redefinir-senha.html';
 });
-
-btnEntrar.addEventListener('click', entrar);

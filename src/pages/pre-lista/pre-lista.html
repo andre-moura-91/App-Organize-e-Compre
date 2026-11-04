@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pr-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +37,7 @@
     <div id="input_geral">
         <div id="input_container">
             <input type="text" id="item_input" placeholder="Nome do item">
-            <button onclick="adicionarItem()" id="add_button">+</button>
+            <button id="add_button" type="button" aria-label="Adicionar item">+</button>
         </div>
     </div>
     <div id="carrinho_container">
@@ -73,6 +73,7 @@
 
     <script src="/src/pages/pre-lista/pre-lista.js" type="module"></script>
     <script src="/src/navigation/appNavigation.js" type="module"></script>
+    <script src="/src/script/authGuard.js" type="module"></script>
 
 </body>
 </html>

@@ -17,40 +17,28 @@
     </div>
 </header>
 <main class="main-login">
-    <form class="section-input">
+    <form class="section-input" id="login-form">
         <div class="user-input">
-            <label class="label" for="text-nome">NOME DO USUÁRIO</label>
-            <input type="text" id="text-nome" class="input-nome" placeholder="Ex: João Silva..." required>
+            <label class="label" for="login-email">E-MAIL</label>
+            <input type="email" id="login-email" class="input-nome" placeholder="seu@email.com" autocomplete="email" required>
         </div>
         
         <div class="password">
             <label class="label" for="text-password">SENHA</label>
             <div class="pass-input">
-                <input type="password" id="text-password" class="input-password" placeholder="Sua senha aqui..." required>
-                <i id="password-line" class="ri-eye-line"></i>
-                <i id="password-offline" class="ri-eye-off-line"></i>
-            </div>
-        <button id="esqueci-senha" class="btn-esqueci">Esqueci minha senha</button>
+                <input type="password" id="text-password" class="input-password" placeholder="Sua senha aqui..." autocomplete="current-password" required>
+                    <button type="button" id="toggle-password" class="password-toggle" aria-label="Mostrar senha" aria-pressed="false">
+                        <i class="ri-eye-line" aria-hidden="true"></i>
+                    </button>
+                </div>
+        <button type="button" id="esqueci-senha" class="btn-esqueci">Esqueci minha senha</button>
         </div>
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        <button type="submit" id="btn-entrar" class="btn-entrar">Entrar</button>
     </form>
 
     <section class="signup-section">
-        <button type="submit" id="btn-entrar" onclick="entrar()" class="btn-entrar" >Entrar</button>
-        <div class="line-geral">
-            <span class="line"></span>
-            <p class="conect-text">ou conecte-se com</p>
-            <span class="line"></span>
-        </div>
-        <div class="social-conect">
-            <div class="conta">
-                <img src="/src/assets/icons/google-logo.svg" alt="Google Logo" class="logo">
-                <a href="https://mail.google.com" class="signup-link">Google</a>
-            </div>
-            <div class="conta">
-                <img src="/src/assets/icons/facebook-logo.svg" alt="Facebook Logo" class="logo">
-                <a href="https://www.facebook.com/?locale=pt_BR" class="signup-link">Facebook</a>
-            </div>
-        </div>
+        <p class="conect-text">Login social ainda não está disponível.</p>
         <div class="cadastre-section">
             <p class="text-cadastre">Novo por aqui?</p>
             <a href="/src/pages/cadastro/cadastro.html" class="cadastre">Cadastre-se</a>
