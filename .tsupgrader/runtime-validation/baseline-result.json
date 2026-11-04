@@ -1,0 +1,110 @@
+{
+  "planHash": "d6961d469487b802af70637c1245deff4b821a90e3da49c80e0380fd46b38832",
+  "phase": "baseline",
+  "recordedAtUtc": "2026-11-04T12:21:11.4865176Z",
+  "retryCount": 0,
+  "resetBaseline": true,
+  "complete": true,
+  "result": {
+    "setupSucceeded": true,
+    "setupDurationMs": 18115,
+    "setupFailureOutput": null,
+    "assertions": [
+      {
+        "name": "production-build",
+        "kind": "process",
+        "verificationMethod": "exit-code",
+        "passed": false,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": 1,
+        "outputSample": "\u001B[36mvite v6.4.2 \u001B[32mbuilding for production...\u001B[36m\u001B[39m\r\n\u003Cscript src=\u0022/src/script/main.js\u0022\u003E in \u0022/index.html\u0022 can\u0027t be bundled without type=\u0022module\u0022 attribute\r\ntransforming...\r\n\u001B[32m\u2713\u001B[39m 2 modules transformed.\r\n\u001B[31m\u2717\u001B[39m Build failed in 411ms\r\n\u001B[31merror during build:\r\n\u001B[31m[vite:terser] terser not found. Since Vite v3, terser has become an optional dependency. You need to install it.\u001B[31m\r\n    at loadTerserPath (file:///G:/meus%20arquivos%20recuperados/ARQUIVOS%20PC%20ANDR%C3%89/TRABALHOS%20DEV/App%20Organize%20\u0026%20Compre/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:9752:13)\r\n    at Object.renderChunk (file:///G:/meus%20arquivos%20recuperados/ARQUIVOS%20PC%20ANDR%C3%89/TRABALHOS%20DEV/App%20Organize%20\u0026%20Compre/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:9793:27)\r\n    at Object.handler (file:///G:/meus%20arquivos%20recuperados/ARQUIVOS%20PC%20ANDR%C3%89/TRABALHOS%20DEV/App%20Organize%20\u0026%20Compre/node_modules/vite/dist/node/chunks/dep-Dq2t6Dq0.js:46583:15)\r\n    at file:///G:/meus%20arquivos%20recuperados/ARQUIVOS%20PC%20ANDR%C3%89/TRABALHOS%20DEV/App%20Organize%20\u0026%20Compre/node_modules/rollup/dist/es/shared/node-entry.js:22967:40\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\u001B[39m\r\n",
+        "durationMs": 1927
+      },
+      {
+        "name": "home-route-serves",
+        "kind": "http-probe",
+        "verificationMethod": "http-status",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": null,
+        "outputSample": "HTTP 200\n\u003C!DOCTYPE html\u003E\r\n\u003Chtml lang=\u0022pt-br\u0022\u003E\r\n\u003Chead\u003E\n  \u003Cscript type=\u0022module\u0022 src=\u0022/@vite/client\u0022\u003E\u003C/script\u003E\n\r\n    \u003Cmeta charset=\u0022UTF-8\u0022\u003E\r\n    \u003Cmeta name=\u0022viewport\u0022 content=\u0022width=device-width, initial-scale=1.0\u0022\u003E\r\n    \u003Clink rel=\u0022stylesheet\u0022 href=\u0022/src/styles/index.css\u0022\u003E\r\n    \u003Ctitle\u003EOrganize\u0026Compre\u003C/title\u003E\r\n\u003C/head\u003E\r\n\u003Cbody\u003E\r\n    \u003Cdiv id=\u0022app\u0022\u003E\r\n      \u003C!-- Splash Screen Container --\u003E\r\n    \r\n      \u003Cdiv id=\u0022splash-screen\u0022 class=\u0022splash-container\u0022\u003E\r\n        \r\n        \u003Cdiv class=\u0022content-wrapper\u0022\u003E\r\n          \u003C!-- Logo Section --\u003E\r\n            \u003Cdiv id=\u0022forma\u0022 class=\u0022forma-card-hidden\u0022\u003E\r\n                \u003Cdiv id=\u0022forma-icon\u0022 class=\u0022forma-simples\u0022\u003E\r\n                    \u003Cimg src=\u0022/src/assets/icons/forma-icon.svg\u0022 alt=\u0022Forma Simples\u0022/\u003E\r\n                \u003C/div\u003E\r\n            \u003C/div\u003E\r\n\r\n          \u003Cdiv class=\u0022logo-area\u0022\u003E\r\n            \u003Cdiv id=\u0022logo-v1\u0022 class=\u0022logo-simple-hidden\u0022\u003E\r\n              \u003Cimg src=\u0022/src/assets/icons/carrinho de compras branco.svg\u0022 alt=\u0022Logo\u0022/\u003E\r\n            \u003C/div\u003E\r\n            \r\n            \u003Cdiv id=\u0022logo-v2\u0022 class=\u0022logo-card-hidden\u0022\u003E\r\n              \u003Cdiv class=\u0022card-v2\u0022\u003E\r\n                \u003Cimg src=\u0022/src/assets/icons/logo carrinho 2.svg\u0022 alt=\u0022Logo-2\u0022/\u003E\r\n              \u003C/div\u003E\r\n            \u003C/div\u003E\r\n          \u003C/div\u003E\r\n\r\n          \u003C!-- Text Section --\u003E\r\n          \u003Cdiv id=\u0022text-section\u0022 class=\u0022text-area-hidden\u0022\u003E\r\n            \u003Ch1 class=\u0022main-title\u0022\u003EOrganize \u0026 Compre\u003C/h1\u003E\r\n            \u003Cdiv class=\u0022divider\u0022\u003E\u003C/div\u003E\r\n            \r\n            \u003Cdiv class=\u0022welcome-msg\u0022\u003E\r\n              \u003Ch2 class=\u0022welcome-title\u0022\u003EBem-vindo\u003C/h2\u003E\r\n              \u003Cp class=\u0022welcome-subtitle\u0022\u003EAO APP DE LISTA DE COMPRAS MAIS PR\u00C1TICO DO MUNDO!\u003C/p\u003E\r\n            \u003C/div\u003E\r\n\r\n            \u003Ca class=\u0022btn-primary\u0022 id=\u0022start-btn\u0022 href=\u0022/src/pages/login/login.html\u0022\u003ECome\u00E7ar\u003C/a\u003E\r\n          \u003C/div\u003E\r\n        \u003C/div\u003E\r\n        \u003Cdiv id=\u0022marca-dagua\u0022 class=\u0022bg-marca\u0022\u003EORG\u003C/div\u003E\r\n      \u003C/div\u003E\r\n    \u003C/div\u003E\r\n\r\n  \u003Cscript src=\u0022/src/script/main.js\u0022\u003E\u003C/script\u003E\r\n\u003C/body\u003E\r\n\u003C/html\u003E\r\n\n--- server output ---\n\r\n  \u001B[32m\u001B[1mVITE\u001B[22m v6.4.2\u001B[39m  \u001B[2mready in \u001B[0m\u001B[1m735\u001B[22m\u001B[2m\u001B[0m ms\u001B[22m\r\n\r\n  \u001B[32m\u279C\u001B[39m  \u001B[1mLocal\u001B[22m:   \u001B[36mhttp://localhost:\u001B[1m5173\u001B[22m/\u001B[39m\r\n  \u001B[32m\u279C\u001B[39m  \u001B[1mNetwork\u001B[22m: \u001B[36mhttp://192.168.200.105:\u001B[1m5173\u001B[22m/\u001B[39m\r\n",
+        "durationMs": 2097
+      },
+      {
+        "name": "tests-pass",
+        "kind": "process",
+        "verificationMethod": "test-results",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": 0,
+        "outputSample": "\r\n RUN  v5.1.0 G:/meus arquivos recuperados/ARQUIVOS PC ANDR\u00C9/TRABALHOS DEV/App Organize \u0026 Compre\r\n\r\n\r\n Test Files  1 passed (1)\r\n      Tests  1 passed (1)\r\n   Start at  09:21:10\r\n   Duration  1.21s (import 87%, transform 9%, worker 2%, tests 2%)\r\n\r\n",
+        "durationMs": 3176,
+        "testResults": {
+          "testFramework": "vitest",
+          "runnerDetectedFrom": "package_json",
+          "testsTotal": 1,
+          "testsPassed": 1,
+          "testsFailed": 0,
+          "testsSkipped": 0,
+          "parseFailed": false
+        }
+      }
+    ],
+    "executions": [
+      {
+        "source": "setup[0]",
+        "resolvedExecutable": "C:\\Program Files\\nodejs\\npm.CMD",
+        "args": [
+          "ci"
+        ],
+        "cwd": "G:\\meus arquivos recuperados\\ARQUIVOS PC ANDR\u00C9\\TRABALHOS DEV\\App Organize \u0026 Compre",
+        "env": {},
+        "prependPath": [],
+        "platform": "win32"
+      },
+      {
+        "source": "production-build",
+        "resolvedExecutable": "C:\\Program Files\\nodejs\\node.EXE",
+        "args": [
+          "node_modules/vite/bin/vite.js",
+          "build"
+        ],
+        "cwd": "G:\\meus arquivos recuperados\\ARQUIVOS PC ANDR\u00C9\\TRABALHOS DEV\\App Organize \u0026 Compre",
+        "env": {},
+        "prependPath": [],
+        "platform": "win32"
+      },
+      {
+        "source": "home-route-serves",
+        "resolvedExecutable": "C:\\Program Files\\nodejs\\node.EXE",
+        "args": [
+          "node_modules/vite/bin/vite.js",
+          "--port=5173",
+          "--host=0.0.0.0"
+        ],
+        "cwd": "G:\\meus arquivos recuperados\\ARQUIVOS PC ANDR\u00C9\\TRABALHOS DEV\\App Organize \u0026 Compre",
+        "env": {},
+        "prependPath": [],
+        "platform": "win32"
+      },
+      {
+        "source": "tests-pass",
+        "resolvedExecutable": "C:\\Program Files\\nodejs\\node.EXE",
+        "args": [
+          "node_modules/vitest/vitest.mjs",
+          "run"
+        ],
+        "cwd": "G:\\meus arquivos recuperados\\ARQUIVOS PC ANDR\u00C9\\TRABALHOS DEV\\App Organize \u0026 Compre",
+        "env": {},
+        "prependPath": [],
+        "platform": "win32"
+      }
+    ]
+  }
+}
