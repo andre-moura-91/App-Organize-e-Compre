@@ -6,29 +6,22 @@ let profile = document.getElementById('profile');
 let meuCarrinho = document.getElementById('meu-carrinho');
 let lista = document.getElementById('lista');
 
-const navItens = document.querySelectorAll('.nav-item')
-const title = document.querySelectorAll('title-icon')
+const navItens = document.querySelectorAll('.nav-item');
 
-title.forEach(item => {
-    item.addEventListener('click', function(event) {
-    event.preventDefault();
-    title.forEach(title => title.classList.remove('active'));
-    title.style.display = 'block';
-    this.classList.add('active');
-    
-    });
-});
-
+const currentPath = window.location.pathname;
 navItens.forEach(item => {
-    item.addEventListener('click', function(event) {
-    event.preventDefault();
-    navItens.forEach(nav => nav.classList.remove('active'));
+    const href = item.getAttribute('href');
+    if (href && currentPath.endsWith(href)) {
+        item.classList.add('active');
+    }
 
-    this.classList.add('active');
+    item.addEventListener('click', function() {
+        navItens.forEach(nav => nav.classList.remove('active'));
+        this.classList.add('active');
     });
 });
 
-/* if (home) {
+if (home) {
     home.onclick = () => {
         window.location.href = '/src/pages/bem-vindo/saudacao.html';
 
@@ -39,15 +32,6 @@ if (historico) {
 historico.onclick = () => {
         window.location.href = '/src/pages/historico/historical.html';
 
-        navItens.forEach(item => {
-            item.addEventListener('click', function(event) {
-            event.preventDefault();
-
-            navItens.forEach(nav => nav.classList.remove('active'));
-
-            this.classList.add('active');
-            });
-        });
 
     };
 }
@@ -55,7 +39,8 @@ historico.onclick = () => {
 if (profile) {
 profile.onclick = () => {
         window.location.href = '/src/pages/profile/perfil.html';
-        perfil.classList.add('hover-ativo')
+
+
     }
 }
 
@@ -63,15 +48,6 @@ if (meuCarrinho) {
 meuCarrinho.onclick = () => {
         window.location.href = '/src/pages/lista/lista.html';
 
-        navItens.forEach(item => {
-            item.addEventListener('click', function(event) {
-            event.preventDefault();
-
-            navItens.forEach(nav => nav.classList.remove('active'));
-
-            this.classList.add('active');
-            });
-        });
 
     }        
 }        
@@ -80,16 +56,8 @@ if (lista) {
 lista.onclick = () => {
         window.location.href = '/src/pages/pre-lista/pre-lista.html';
 
-        navItens.forEach(item => {
-            item.addEventListener('click', function(event) {
-            event.preventDefault();
-
-            navItens.forEach(nav => nav.classList.remove('active'));
-
-            this.classList.add('active');
-            });
-        });
 
     }                                           
-}         */                                    
+}   
+
 });

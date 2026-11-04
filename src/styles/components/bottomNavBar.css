@@ -13,34 +13,22 @@
     justify-content: space-around;
     gap: 5px;
     padding: 10px 10px 10px 10px;
-    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     z-index: 1000;
 }
 
-/*.bottom-navbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    flex-direction: column;
-    font-family: var(--fonte-principal-titulo);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}*/
-
 .title-icon {
     display: none;
-    
 }
 
-.title-icon.active {
+.nav-item.active .title-icon {
     display: block;
     position: relative;
-    font-size: 13px;
-    margin-top: 36px;
+    margin-top: 10px;
+    width: 65px;
+    font-size: 12px;
     color: var(--cor-principal-laranja);
     transition: all 0.3s ease;
 }
@@ -57,8 +45,7 @@ svg {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: var(--cor-text1-branco) solid 7px;
-    background-color: var(--cor-text1-branco);
+    margin-bottom: 30px;
     font-size: 22px;
     text-decoration: none;
     color: var(--cor-bottombar-cinza);
@@ -67,14 +54,22 @@ svg {
 }
 
 .nav-item i {
+    margin-top: 30px;
     position: relative;
     transition: transform 0.2s ease;
     z-index: 3;
 }
 
+.nav-item span {
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .nav-item.active {
     transform: translateY(-3px);
-    margin-bottom: 45px;
+    margin-bottom: 35px;
     width: 65px;
     height: 65px;
     align-items: center;

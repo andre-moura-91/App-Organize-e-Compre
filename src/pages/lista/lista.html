@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/src/pages/lista/lista.css">
     <title>Organize&Compre</title>
@@ -41,7 +41,7 @@
                 <input type="text" id="item_input" placeholder="Nome do item">
                 <input id="valor_input" type="text" inputmode="numeric" placeholder="R$ 0,00">
                 <i class="ri-equalizer-line" id="quantidade_itens"></i>
-                <button onclick="adicionarItem()" id="add_button">+</button>
+                <button id="add_button">+</button>
             </div>
             <ul id="quanti_Numeros">
                 <!--quantidade de itens-->
@@ -50,7 +50,7 @@
         <section id="total_itens">
             <div id="Info_Pendente">
                 <a class="soma_label">PENDENTE</a>
-                <span class="total_value" inputmode="decimal" step="0.01" id="pendente">R$ 0,00</span>
+                <span class="total_value" id="pendente">R$ 0,00</span>
                 <span class="total_itens" id="qtn-pendente">0 itens</span>
             </div>
             <div id="Info_Carrinho">
@@ -76,7 +76,7 @@
             <h3 class="adicione">Adicione um item à sua lista</h3>
         </div>
         <ul id="carrinhoLista">
-                <!-- Os itens do carrinho serão adicionados aqui dinamicamente -->
+                <!--Os itens do carrinho serão adicionados aqui dinamicamente-->
         </ul>
     </main>
     <nav class="container-navigation">
@@ -92,7 +92,7 @@
             <i class="ri-user-3-fill"></i>
             <span class="title-icon">Perfil</span>
         </a>
-        <a href="/src/pages/lista/lista.html" class="nav-item">
+        <a href="/src/pages/lista/lista.html" class="nav-item active">
             <i class="ri-shopping-cart-2-fill"></i>
             <span class="title-icon">Carrinho</span>
         </a>
@@ -101,31 +101,8 @@
             <span class="title-icon">Pré-lista</span>
         </a>
     </nav>
-    <!--<iframe src="/src/navigation/bottomNavBar.html"></iframe>
-    <div class="container-navigation">
-        <a href="/src/pages/bem-vindo/saudacao.html" class="bottom-navbar">
-            <span class="home"><i class="ri-home-9-fill"></i></span>
-            <span class="titlle-icon">Início</span>
-        </a>
-        <a href="/src/pages/historico/historical.html" class="bottom-navbar">
-            <span class="history"><i class="ri-history-fill"></i></span>
-            <span class="titlle-icon">Histórico</span>
-        </a>
-        <a href="/src/pages/profile/perfil.html" class="bottom-navbar">
-            <span class="profile"><i class="ri-user-3-fill"></i></span>
-            <span class="titlle-icon">Perfil</span>
-        </a>
-        <a href="/src/pages/lista/lista.html" class="bottom-navbar">
-            <span class="cart-nav"><i class="ri-shopping-cart-2-fill"></i></span>
-            <span class="titlle-icon">Carrinho</span>
-        </a>
-        <a href="/src/pages/pre-lista/pre-lista.html" class="bottom-navbar">
-            <span class="list"><i class="ri-list-unordered"></i></span>
-            <span class="titlle-icon">Pré-lista</span>
-        </a>
-    </div>!-->
 
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
     <script src="/src/pages/lista/lista.js" type="module"></script>
     <script src="/src/navigation/appNavigation.js" type="module"></script>

@@ -9,189 +9,187 @@
     <title>Organize&Compre</title>
 </head>
 <body>
-<header>
-    <!-- TELA: PERFIL -->
-    <div class="screen active" id="screen-perfil">
-        <section class="nav">
-            <span class="bg">ORG</span>
-            <div class="header-top">
-                <h1 class="header-title">Perfil</h1>
-            </div>
-        </section>
-        <section class="info-perfil">
-            <img class="avatar" src="/src/assets/imagens/avatar.png" alt="Avatar de André Moura">
-            <div class="user-info">
-                <h3 class="user-name">Nome Sobrenome</h3>
-                <p class="user-email">coloque_seu@email.com</p>
-            </div>
-        </section>
-
-        <section class="main-content">
-            <h2 class="titulo">Conta</h2>
-            <div class="row-card" onclick="goTo('editar')">
-                <span class="icon-circle">
-                    <img src="/src/assets/icons/icons perfil/G perfil.svg" alt="Gerenciar perfil">
-                </span>
-                <span class="row-label">Gerenciar perfil</span>
-                <span class="chevron">›</span>
-            </div>
-            <div class="row-card" onclick="showToast('Abrindo senha e segurança...')">
-                <span class="icon-circle">
-                    <img src="/src/assets/icons/icons perfil/segurança.svg" alt="Segurança">
-                </span>
-                <span class="row-label">Senha e segurança</span>
-                <span class="chevron">›</span>
-            </div>
-            <div class="row-card" onclick="showToast('Abrindo configurações...')">
-                <span class="icon-circle">
-                    <img src="/src/assets/icons/icons perfil/configuraçoes.svg" alt="Configurações">
-                </span>
-                <span class="row-label">Configurações</span>
-                <span class="chevron">›</span>
-            </div>
-    
-            <h2 class="titulo">Preferências</h2>
-            <div class="row-card" onclick="showToast('Alterando tema...')">
-                <span class="icon-circle">
-                    <img src="/src/assets/icons/icons perfil/tema.svg" alt="Tema">
-                </span>
-                <span class="row-label">Tema</span>
-                <span class="chevron">›</span>
-            </div>
-            <div class="row-card" onclick="showToast('Abrindo notificações...')">
-                <span class="icon-circle">
-                    <img src="/src/assets/icons/icons perfil/notificacoes.svg" alt="Notificações">
-                </span>
-                <span class="row-label">Notificações</span>
-                <span class="chevron">›</span>
-            </div>
-            <div class="row-card" onclick="showToast('Saindo da conta...')">
-                <span class="icon-circle">
-                    <img src="/src/assets/icons/icons perfil/sair.svg" alt="Sair">
-                </span>
-                <span class="row-label">Sair</span>
-                <span class="chevron">›</span>
-            </div>
-            <div class="row-card danger" onclick="showToast('Ação irreversível — confirme para deletar')">
-                <span class="icon-circle">
-                    <img src="/src/assets/icons/icons perfil/deletar conta.svg" alt="Deletar conta">
-                </span>
-                <span class="row-delete">Deletar conta</span>
-                <span class="chevron">›</span>
-            </div>
-    
-            <div class="titulo">Suporte</div>
-            <div class="row-card" onclick="showToast('Abrindo feedback...')">
-                <span class="icon-circle">
-                    <img src="/src/assets/icons/icons perfil/feedback.svg" alt="Feedback">
-                </span>
-                <span class="row-label">Feedback</span>
-                <span class="chevron">›</span>
-            </div>
-            <div class="row-card" onclick="showToast('Abrindo ajuda...')">
-                <span class="icon-circle">
-                    <img src="/src/assets/icons/icons perfil/ajuda.svg" alt="Ajuda">
-                </span>
-                <span class="row-label">Preciso de ajuda</span>
-                <span class="chevron">›</span>
-            </div>
-            <p class="text-direitos">© 2026 Organize&Compre. Todos os direitos reservados.</p>
-        </section>
-        <div class="toast" id="toast-perfil"></div>
-    </div>
-
-    <!-- TELA: EDITAR PERFIL -->
-    <div class="screen" id="screen-editar">
-        <section class="nav">
-            <span class="bg-editar">ORG</span>
-            <div class="editar-top">
-                <button class="back-btn" onclick="goTo('perfil')">
-                    <img class="seta" src="/src/assets/icons/icons perfil/seta.svg" alt="Seta">
-                </button>
-                <h1 class="title-editar">Editar Perfil</h1>
-            </div>
-        </section>
-        <section class="info-perfil">
-            <div class="avatar-edit-wrap">
+    <header>
+        <!-- TELA: PERFIL -->
+        <div class="screen active" id="screen-perfil">
+            <section class="nav">
+                <span class="bg">ORG</span>
+                <div class="header-top">
+                    <h1 class="header-title">Perfil</h1>
+                </div>
+            </section>
+            <section class="info-perfil">
                 <img class="avatar" src="/src/assets/imagens/avatar.png" alt="Avatar de André Moura">
-                <img class="camera-badge" src="/src/assets/icons/camera.svg" alt="Câmera" onclick="showToast('Selecionar nova foto')">
-            </div>
-        </section>
+                <div class="user-info">
+                    <h3 class="user-name">Nome Sobrenome</h3>
+                    <p class="user-email">coloque_seu@email.com</p>
+                </div>
+            </section>
 
-        <section class="body">
-            <div class="field">
-                <label for="nome">Nome</label>
-                <div class="input-wrap">
-                    <input type="text" id="nome" placeholder="Seu nome completo aqui...">
+            <section class="main-content">
+                <h2 class="titulo">Conta</h2>
+                <div class="row-card" onclick="goTo('editar')">
+                    <span class="icon-circle">
+                        <img src="/src/assets/icons/icons perfil/G perfil.svg" alt="Gerenciar perfil">
+                    </span>
+                    <span class="row-label">Gerenciar perfil</span>
+                    <span class="chevron">›</span>
                 </div>
-            </div>
-            <div class="field">
-                <label for="email">E-mail</label>
-                <div class="input-wrap">
-                    <input type="email" id="email" placeholder="coloque_seu@email.com">
+                <div class="row-card" onclick="showToast('Abrindo senha e segurança...')">
+                    <span class="icon-circle">
+                        <img src="/src/assets/icons/icons perfil/segurança.svg" alt="Segurança">
+                    </span>
+                    <span class="row-label">Senha e segurança</span>
+                    <span class="chevron">›</span>
                 </div>
-            </div>
-            <div class="field">
-                <label for="usuario">Usuário</label>
-                <div class="input-wrap">
-                    <input type="text" id="usuario" placeholder="@nome_usuário">
+                <div class="row-card" onclick="showToast('Abrindo configurações...')">
+                    <span class="icon-circle">
+                        <img src="/src/assets/icons/icons perfil/configuraçoes.svg" alt="Configurações">
+                    </span>
+                    <span class="row-label">Configurações</span>
+                    <span class="chevron">›</span>
                 </div>
-            </div>
-            <div class="field">
-                <label for="genero">Gênero</label>
-                <div class="input-wrap-genero">
-                    <select class="input-genero" id="genero">
-                        <option>Masculino</option>
-                        <option>Feminino</option>
-                        <option>Prefiro não dizer</option>
-                        <option>Outro</option>
-                    </select>
-                    <div class="conteiner-seta">
-                        <img class="icon-setadown" src="/src/assets/icons/icons perfil/seta down.svg" alt="Gênero">
+        
+                <h2 class="titulo">Preferências</h2>
+                <div class="row-card" onclick="showToast('Alterando tema...')">
+                    <span class="icon-circle">
+                        <img src="/src/assets/icons/icons perfil/tema.svg" alt="Tema">
+                    </span>
+                    <span class="row-label">Tema</span>
+                    <span class="chevron">›</span>
+                </div>
+                <div class="row-card" onclick="showToast('Abrindo notificações...')">
+                    <span class="icon-circle">
+                        <img src="/src/assets/icons/icons perfil/notificacoes.svg" alt="Notificações">
+                    </span>
+                    <span class="row-label">Notificações</span>
+                    <span class="chevron">›</span>
+                </div>
+                <div class="row-card" onclick="showToast('Saindo da conta...')">
+                    <span class="icon-circle">
+                        <img src="/src/assets/icons/icons perfil/sair.svg" alt="Sair">
+                    </span>
+                    <span class="row-label">Sair</span>
+                    <span class="chevron">›</span>
+                </div>
+                <div class="row-card danger" onclick="showToast('Ação irreversível — confirme para deletar')">
+                    <span class="icon-circle">
+                        <img src="/src/assets/icons/icons perfil/deletar conta.svg" alt="Deletar conta">
+                    </span>
+                    <span class="row-delete">Deletar conta</span>
+                    <span class="chevron">›</span>
+                </div>
+        
+                <div class="titulo">Suporte</div>
+                <div class="row-card" onclick="showToast('Abrindo feedback...')">
+                    <span class="icon-circle">
+                        <img src="/src/assets/icons/icons perfil/feedback.svg" alt="Feedback">
+                    </span>
+                    <span class="row-label">Feedback</span>
+                    <span class="chevron">›</span>
+                </div>
+                <div class="row-card" onclick="showToast('Abrindo ajuda...')">
+                    <span class="icon-circle">
+                        <img src="/src/assets/icons/icons perfil/ajuda.svg" alt="Ajuda">
+                    </span>
+                    <span class="row-label">Preciso de ajuda</span>
+                    <span class="chevron">›</span>
+                </div>
+                <p class="text-direitos">© 2026 Organize&Compre. Todos os direitos reservados.</p>
+            </section>
+            <div class="toast" id="toast-perfil"></div>
+        </div>
+
+        <!-- TELA: EDITAR PERFIL -->
+        <div class="screen" id="screen-editar">
+            <section class="nav">
+                <span class="bg-editar">ORG</span>
+                <div class="editar-top">
+                    <button class="back-btn" onclick="goTo('perfil')">
+                        <img class="seta" src="/src/assets/icons/icons perfil/seta.svg" alt="Seta">
+                    </button>
+                    <h1 class="title-editar">Editar Perfil</h1>
+                </div>
+            </section>
+            <section class="info-perfil">
+                <div class="avatar-edit-wrap">
+                    <img class="avatar" src="/src/assets/imagens/avatar.png" alt="Avatar de André Moura">
+                    <img class="camera-badge" src="/src/assets/icons/camera.svg" alt="Câmera" onclick="showToast('Selecionar nova foto')">
+                </div>
+            </section>
+
+            <section class="body">
+                <div class="field">
+                    <label for="nome">Nome</label>
+                    <div class="input-wrap">
+                        <input type="text" id="nome" placeholder="Seu nome completo aqui...">
                     </div>
                 </div>
-            </div>
-            <div class="field">
-                <label for="senha">Senha</label>
-                <div class="input-wrap">
-                    <input type="password" id="senha" placeholder="••••••••••••" value="senha1234">
-                    <button class="eye-toggle" type="button" onclick="togglePw()">
-                        <i id="password-line" class="ri-eye-line"></i>
-                        <i id="password-offline" class="ri-eye-off-line"></i>
-                    </button>
+                <div class="field">
+                    <label for="email">E-mail</label>
+                    <div class="input-wrap">
+                        <input type="email" id="email" placeholder="coloque_seu@email.com">
+                    </div>
                 </div>
-            </div>
-            <button class="save-btn" id="save-btn" onclick="saveProfile()">Salvar</button>
-            <p class="text-direitos">© 2026 Organize&Compre. Todos os direitos reservados.</p>
-        </section>
+                <div class="field">
+                    <label for="usuario">Usuário</label>
+                    <div class="input-wrap">
+                        <input type="text" id="usuario" placeholder="@nome_usuário">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="genero">Gênero</label>
+                    <div class="input-wrap-genero">
+                        <select class="input-genero" id="genero">
+                            <option>Masculino</option>
+                            <option>Feminino</option>
+                            <option>Prefiro não dizer</option>
+                            <option>Outro</option>
+                        </select>
+                        <div class="conteiner-seta">
+                            <img class="icon-setadown" src="/src/assets/icons/icons perfil/seta down.svg" alt="Gênero">
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="senha">Senha</label>
+                    <div class="input-wrap">
+                        <input type="password" id="senha" placeholder="••••••••••••" value="senha1234">
+                        <button class="eye-toggle" type="button" onclick="togglePw()">
+                            <i id="password-line" class="ri-eye-line"></i>
+                            <i id="password-offline" class="ri-eye-off-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <button class="save-btn" id="save-btn" onclick="saveProfile()">Salvar</button>
+                <p class="text-direitos">© 2026 Organize&Compre. Todos os direitos reservados.</p>
+            </section>
 
-        <div class="toast" id="toast-editar"></div>
-    </div>
-</header>
-<footer>
-    <div class="container-navigation">
-        <a href="/src/pages/bem-vindo/saudacao.html" class="bottom-navbar">
-            <span class="home"><i class="ri-home-9-fill"></i></span>
-            <span class="titlle-icon">Início</span>
+            <div class="toast" id="toast-editar"></div>
+        </div>
+    </header>
+    <nav class="container-navigation">
+        <a href="/src/pages/bem-vindo/saudacao.html" class="nav-item">
+            <i class="ri-home-9-fill"></i>
+            <span class="title-icon">Início</span>
         </a>
-        <a href="/src/pages/historico/historical.html" class="bottom-navbar">
-            <span class="history"><i class="ri-history-fill"></i></span>
-            <span class="titlle-icon">Histórico</span>
+        <a href="/src/pages/historico/historical.html" class="nav-item">
+            <i class="ri-history-fill"></i>
+            <span class="title-icon">Histórico</span>
         </a>
-        <a href="/src/pages/profile/perfil.html" class="bottom-navbar">
-            <span class="profile"><i class="ri-user-3-fill"></i></span>
-            <span class="titlle-icon">Perfil</span>
+        <a href="/src/pages/profile/perfil.html" class="nav-item">
+            <i class="ri-user-3-fill"></i>
+            <span class="title-icon">Perfil</span>
         </a>
-        <a href="/src/pages/lista/lista.html" class="bottom-navbar">
-            <span class="cart-nav"><i class="ri-shopping-cart-2-fill"></i></span>
-            <span class="titlle-icon">Carrinho</span>
+        <a href="/src/pages/lista/lista.html" class="nav-item">
+            <i class="ri-shopping-cart-2-fill"></i>
+            <span class="title-icon">Carrinho</span>
         </a>
-        <a href="/src/pages/pre-lista/pre-lista.html" class="bottom-navbar">
-            <span class="list"><i class="ri-list-unordered"></i></span>
-            <span class="titlle-icon">Pré-lista</span>
+        <a href="/src/pages/pre-lista/pre-lista.html" class="nav-item">
+            <i class="ri-list-unordered"></i>
+            <span class="title-icon">Pré-lista</span>
         </a>
-    </div>
-</footer>
+    </nav>
 
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>

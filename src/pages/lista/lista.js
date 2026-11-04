@@ -40,8 +40,6 @@ function adicionarItem() {
     const itemInput = document.getElementById('item_input');
     const valorInput = document.getElementById('valor_input');
     const addButton = document.getElementById('add_button');
-    // Assumindo um ID para a qtde atual
-    const quantidadeDisplay = document.getElementById('quanti_Numeros_valor');
 
     let qtdSelecionada = parseInt(document.getElementById('quantidade-itens')?.textContent) || 1;
 
