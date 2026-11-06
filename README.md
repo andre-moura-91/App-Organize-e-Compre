@@ -22,20 +22,24 @@ Aplicação web para organizar listas de compras. O projeto oferece telas de cad
    npm install
    ```
 
-2. Crie a configuração local e substitua `SESSION_SECRET` pelo valor aleatório gerado no segundo comando. Não envie o arquivo `.env` ao Git:
+2. Crie a configuração local:
 
    ```powershell
    Copy-Item .env.example .env
    node --input-type=module -e "import { randomBytes } from 'node:crypto'; console.log(randomBytes(48).toString('base64url'))"
    ```
 
-3. Inicie o PostgreSQL local:
+   Copie o valor impresso pelo segundo comando, abra `.env` e substitua o valor de `SESSION_SECRET`. Não envie o arquivo `.env` ao Git.
+
+3. Inicie o PostgreSQL local com Docker:
 
    ```powershell
    docker compose up -d db
    ```
 
-   O usuário, a senha e o banco de desenvolvimento são definidos no `.env`. Se alterar a senha, atualize também `DATABASE_URL`. Não reutilize essas credenciais em produção.
+   O PostgreSQL do contêiner fica disponível em `127.0.0.1:5433` para não conflitar com uma instalação local que use a porta padrão `5432`. Confirme com `docker compose ps db` que o serviço está como `healthy` antes de continuar. O usuário, a senha e o banco de desenvolvimento são definidos no `.env`. Se alterar a senha, atualize também `DATABASE_URL`. Não reutilize essas credenciais em produção.
+
+   Se for usar uma instância PostgreSQL já existente, pule o comando do Docker e configure `DATABASE_URL` no `.env` com os dados dessa instância; o banco indicado precisa existir.
 
 4. Inicie o backend e o Vite:
 
